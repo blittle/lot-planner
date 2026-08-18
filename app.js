@@ -2,6 +2,7 @@
   const STORAGE_KEY = 'lotPlanner.placements.v1';
   const IMAGE_WIDTH_FT = LOT_DATA.imageWidthFt;
   const IMAGE_PX_WIDTH = LOT_DATA.imagePxWidth;
+  const IMAGE_HEIGHT_FT = IMAGE_WIDTH_FT * (LOT_DATA.imagePxHeight / LOT_DATA.imagePxWidth);
   const PLANTS = LOT_DATA.plants;
   const PLANTS_BY_ID = Object.fromEntries(PLANTS.map(p => [p.id, p]));
 
@@ -88,6 +89,12 @@
   const filterInput = document.getElementById('filterInput');
   const statsEl = document.getElementById('stats');
   const clearAllBtn = document.getElementById('clearAllBtn');
+  const rulerBtn = document.getElementById('rulerBtn');
+  const rulerLayer = document.getElementById('rulerLayer');
+  const rulerLine = document.getElementById('rulerLine');
+  const rulerDotStart = document.getElementById('rulerDotStart');
+  const rulerDotEnd = document.getElementById('rulerDotEnd');
+  const rulerLabel = document.getElementById('rulerLabel');
 
   // ---- Tabs ----
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -225,11 +232,79 @@
     return Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
   }
 
+  // ---- Ruler ----
+  let rulerMode = false;
+  let rulerDragging = false;
+  let rulerStart = null; // {xPct, yPct}, fraction of image bounds (0-1)
+
+  function clearRuler() {
+    rulerDragging = false;
+    rulerStart = null;
+    rulerLayer.style.display = 'none';
+    rulerLabel.style.display = 'none';
+    rulerDotStart.style.display = 'none';
+    rulerDotEnd.style.display = 'none';
+  }
+
+  rulerBtn.addEventListener('click', () => {
+    rulerMode = !rulerMode;
+    rulerBtn.classList.toggle('active', rulerMode);
+    viewport.classList.toggle('ruler-mode', rulerMode);
+    clearRuler();
+  });
+
+  function stagePctFromEvent(e) {
+    const rect = stage.getBoundingClientRect();
+    return {
+      xPct: clamp((e.clientX - rect.left) / rect.width, 0, 1),
+      yPct: clamp((e.clientY - rect.top) / rect.height, 0, 1),
+    };
+  }
+
+  function distanceFt(a, b) {
+    const dxFt = (b.xPct - a.xPct) * IMAGE_WIDTH_FT;
+    const dyFt = (b.yPct - a.yPct) * IMAGE_HEIGHT_FT;
+    return Math.hypot(dxFt, dyFt);
+  }
+
+  function formatFt(ft) {
+    const feet = Math.floor(ft);
+    let inches = Math.round((ft - feet) * 12);
+    let wholeFeet = feet;
+    if (inches === 12) { inches = 0; wholeFeet += 1; }
+    return `${wholeFeet}' ${inches}" (${ft.toFixed(1)} ft)`;
+  }
+
+  function updateRulerVisual(a, b) {
+    rulerLayer.style.display = 'block';
+    rulerLine.setAttribute('x1', a.xPct * 100);
+    rulerLine.setAttribute('y1', a.yPct * 100);
+    rulerLine.setAttribute('x2', b.xPct * 100);
+    rulerLine.setAttribute('y2', b.yPct * 100);
+    rulerDotStart.style.left = (a.xPct * 100) + '%';
+    rulerDotStart.style.top = (a.yPct * 100) + '%';
+    rulerDotStart.style.display = 'block';
+    rulerDotEnd.style.left = (b.xPct * 100) + '%';
+    rulerDotEnd.style.top = (b.yPct * 100) + '%';
+    rulerDotEnd.style.display = 'block';
+    rulerLabel.style.left = ((a.xPct + b.xPct) / 2 * 100) + '%';
+    rulerLabel.style.top = ((a.yPct + b.yPct) / 2 * 100) + '%';
+    rulerLabel.style.display = 'block';
+    rulerLabel.textContent = formatFt(distanceFt(a, b));
+  }
+
   viewport.addEventListener('pointerdown', (e) => {
     // Let clicks/taps on the zoom controls behave normally — without this,
     // any tiny mouse movement during the click would let setPointerCapture()
     // below hijack the pointerup/click sequence away from the button.
     if (e.target.closest('.zoom-controls')) return;
+    if (rulerMode && e.pointerType !== 'touch' && e.button === 0) {
+      rulerDragging = true;
+      rulerStart = stagePctFromEvent(e);
+      viewport.setPointerCapture(e.pointerId);
+      updateRulerVisual(rulerStart, rulerStart);
+      return;
+    }
     if (e.pointerType === 'touch') {
       activeTouches.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (activeTouches.size === 2) {
@@ -249,6 +324,10 @@
   });
 
   viewport.addEventListener('pointermove', (e) => {
+    if (rulerDragging) {
+      updateRulerVisual(rulerStart, stagePctFromEvent(e));
+      return;
+    }
     if (e.pointerType === 'touch' && activeTouches.has(e.pointerId)) {
       activeTouches.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (activeTouches.size === 2 && pinchStartDist) {
@@ -269,6 +348,10 @@
   });
 
   function endPan(e) {
+    if (rulerDragging) {
+      rulerDragging = false;
+      return;
+    }
     if (e && e.pointerType === 'touch') {
       activeTouches.delete(e.pointerId);
       if (activeTouches.size < 2) pinchStartDist = null;

@@ -144,6 +144,53 @@ body {
 }
 .zoom-btn:hover { background: var(--accent-light); }
 .zoom-btn-wide { width: auto; padding: 0 8px; font-size: 11px; }
+.zoom-btn.active { background: #2b6fd1; border-color: #2b6fd1; color: #fff; }
+.zoom-btn.active:hover { background: #2b6fd1; }
+
+.viewport.ruler-mode { cursor: crosshair; }
+
+.ruler-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  display: none;
+}
+.ruler-line {
+  stroke: #d1272b;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+}
+.ruler-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: #d1272b;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 2px rgba(0,0,0,0.6);
+  pointer-events: none;
+  display: none;
+}
+
+.ruler-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.95);
+  color: #d1272b;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #d1272b;
+  pointer-events: none;
+  display: none;
+}
 
 .zoom-level {
   font-size: 11px;
