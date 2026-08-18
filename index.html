@@ -21,6 +21,7 @@
       <div id="viewport" class="viewport">
         <div id="stage" class="stage">
           <img id="lotImage" src="141.79ft.jpg" alt="Property top-down view" draggable="false">
+          <div id="shapes" class="shapes"></div>
           <div id="markers" class="markers"></div>
           <svg id="rulerLayer" class="ruler-layer" viewBox="0 0 100 100" preserveAspectRatio="none">
             <line id="rulerLine" class="ruler-line" x1="0" y1="0" x2="0" y2="0"></line>
@@ -45,6 +46,7 @@
         <button class="tab-btn" data-tab="all">All</button>
         <button class="tab-btn active" data-tab="unplaced">Not Placed</button>
         <button class="tab-btn" data-tab="placed">Placed</button>
+        <button class="tab-btn" data-tab="shapes">Shapes</button>
       </div>
 
       <input type="text" id="filterInput" class="filter-input" placeholder="Filter by name, category, color...">
@@ -59,6 +61,36 @@
 
       <div class="tab-panel" id="panel-placed">
         <div id="placedList" class="plant-list"></div>
+      </div>
+
+      <div class="tab-panel" id="panel-shapes">
+        <div class="shape-form">
+          <div class="shape-form-row">
+            <select id="shapeTypeInput" class="shape-select">
+              <option value="circle">Circle</option>
+              <option value="rectangle">Rectangle</option>
+            </select>
+            <input type="color" id="shapeColorInput" class="shape-color" value="#2b6fd1" title="Shape color">
+            <label class="shape-field shape-opacity-field">Opacity (%)
+              <input type="number" id="shapeOpacityInput" min="0" max="100" step="5" value="100">
+            </label>
+          </div>
+          <div class="shape-form-row" id="circleFields">
+            <label class="shape-field">Diameter (ft)
+              <input type="number" id="shapeDiameterInput" min="0.5" step="0.5" value="6">
+            </label>
+          </div>
+          <div class="shape-form-row" id="rectFields" style="display:none">
+            <label class="shape-field">Width (ft)
+              <input type="number" id="shapeWidthInput" min="0.5" step="0.5" value="6">
+            </label>
+            <label class="shape-field">Height (ft)
+              <input type="number" id="shapeHeightInput" min="0.5" step="0.5" value="4">
+            </label>
+          </div>
+          <button id="addShapeBtn" class="btn btn-primary">Add to map</button>
+        </div>
+        <div id="shapeListEl" class="plant-list"></div>
       </div>
     </aside>
   </main>

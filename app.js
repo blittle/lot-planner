@@ -1,5 +1,6 @@
 (function () {
   const STORAGE_KEY = 'lotPlanner.placements.v1';
+  const STORAGE_KEY_SHAPES = 'lotPlanner.shapes.v1';
   const IMAGE_WIDTH_FT = LOT_DATA.imageWidthFt;
   const IMAGE_PX_WIDTH = LOT_DATA.imagePxWidth;
   const IMAGE_HEIGHT_FT = IMAGE_WIDTH_FT * (LOT_DATA.imagePxHeight / LOT_DATA.imagePxWidth);
@@ -59,6 +60,10 @@
   let selectedInstanceId = null;
   let filterText = '';
 
+  // [{shapeId, type: 'circle'|'rectangle', color, diameterFt, widthFt, heightFt, xPct, yPct}]
+  let shapes = loadShapes();
+  let selectedShapeId = null;
+
   function loadPlacements() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -78,6 +83,25 @@
     return 'inst-' + Date.now() + '-' + Math.floor(Math.random() * 100000);
   }
 
+  function loadShapes() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY_SHAPES);
+      if (!raw) return [];
+      return JSON.parse(raw);
+    } catch (e) {
+      console.warn('Failed to load shapes', e);
+      return [];
+    }
+  }
+
+  function saveShapes() {
+    localStorage.setItem(STORAGE_KEY_SHAPES, JSON.stringify(shapes));
+  }
+
+  function nextShapeId() {
+    return 'shape-' + Date.now() + '-' + Math.floor(Math.random() * 100000);
+  }
+
   // ---- DOM refs ----
   const viewport = document.getElementById('viewport');
   const stage = document.getElementById('stage');
@@ -95,6 +119,17 @@
   const rulerDotStart = document.getElementById('rulerDotStart');
   const rulerDotEnd = document.getElementById('rulerDotEnd');
   const rulerLabel = document.getElementById('rulerLabel');
+  const shapesEl = document.getElementById('shapes');
+  const shapeListEl = document.getElementById('shapeListEl');
+  const shapeTypeInput = document.getElementById('shapeTypeInput');
+  const shapeColorInput = document.getElementById('shapeColorInput');
+  const shapeOpacityInput = document.getElementById('shapeOpacityInput');
+  const shapeDiameterInput = document.getElementById('shapeDiameterInput');
+  const shapeWidthInput = document.getElementById('shapeWidthInput');
+  const shapeHeightInput = document.getElementById('shapeHeightInput');
+  const circleFields = document.getElementById('circleFields');
+  const rectFields = document.getElementById('rectFields');
+  const addShapeBtn = document.getElementById('addShapeBtn');
 
   // ---- Tabs ----
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -132,6 +167,33 @@
     placements = [];
     selectedInstanceId = null;
     savePlacements();
+    renderAll();
+  });
+
+  // ---- Shape creation form ----
+  shapeTypeInput.addEventListener('change', () => {
+    const isCircle = shapeTypeInput.value === 'circle';
+    circleFields.style.display = isCircle ? '' : 'none';
+    rectFields.style.display = isCircle ? 'none' : '';
+  });
+
+  addShapeBtn.addEventListener('click', () => {
+    const type = shapeTypeInput.value;
+    const color = shapeColorInput.value;
+    const opacity = clamp((parseFloat(shapeOpacityInput.value) || 0) / 100, 0, 1);
+    let shape;
+    if (type === 'circle') {
+      const diameterFt = Math.max(0.5, parseFloat(shapeDiameterInput.value) || 0.5);
+      shape = { shapeId: nextShapeId(), type, color, opacity, diameterFt, xPct: 0.5, yPct: 0.5 };
+    } else {
+      const widthFt = Math.max(0.5, parseFloat(shapeWidthInput.value) || 0.5);
+      const heightFt = Math.max(0.5, parseFloat(shapeHeightInput.value) || 0.5);
+      shape = { shapeId: nextShapeId(), type, color, opacity, widthFt, heightFt, xPct: 0.5, yPct: 0.5 };
+    }
+    shapes.push(shape);
+    selectedShapeId = shape.shapeId;
+    selectedInstanceId = null;
+    saveShapes();
     renderAll();
   });
 
@@ -315,7 +377,7 @@
       return;
     }
     if (e.button !== 0) return;
-    if (e.target.closest('.marker')) return;
+    if (e.target.closest('.marker') || e.target.closest('.shape')) return;
     panning = true;
     panMoved = false;
     panStart = { x: e.clientX, y: e.clientY, panX, panY };
@@ -493,8 +555,11 @@
 
       card.addEventListener('click', () => {
         selectedInstanceId = inst.instanceId;
+        selectedShapeId = null;
         renderMarkers();
+        renderShapes();
         renderPlacedList();
+        renderShapeList();
         const markerEl = markersEl.querySelector(`[data-instance-id="${inst.instanceId}"]`);
         if (markerEl) markerEl.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
       });
@@ -530,8 +595,11 @@
       marker.addEventListener('click', (e) => {
         e.stopPropagation();
         selectedInstanceId = inst.instanceId;
+        selectedShapeId = null;
         renderMarkers();
+        renderShapes();
         renderPlacedList();
+        renderShapeList();
       });
 
       markersEl.appendChild(marker);
@@ -574,6 +642,156 @@
     marker.addEventListener('pointerup', onUp);
   }
 
+  // ---- Rendering: shapes on map ----
+  function alphaHex(opacity) {
+    return Math.round(clamp(opacity, 0, 1) * 255).toString(16).padStart(2, '0');
+  }
+
+  function formatShapeSize(shape) {
+    if (shape.type === 'circle') return `${shape.diameterFt}' diameter`;
+    return `${shape.widthFt}' × ${shape.heightFt}'`;
+  }
+
+  function renderShapes() {
+    shapesEl.innerHTML = '';
+    const scale = getScalePxPerFt();
+    for (const shape of shapes) {
+      const el = document.createElement('div');
+      el.className = 'shape' + (shape.type === 'circle' ? ' shape-circle' : '') +
+        (shape.shapeId === selectedShapeId ? ' selected' : '');
+      el.dataset.shapeId = shape.shapeId;
+      if (shape.type === 'circle') {
+        const diameterPx = Math.max(6, shape.diameterFt * scale);
+        el.style.width = diameterPx + 'px';
+        el.style.height = diameterPx + 'px';
+      } else {
+        el.style.width = Math.max(6, shape.widthFt * scale) + 'px';
+        el.style.height = Math.max(6, shape.heightFt * scale) + 'px';
+      }
+      el.style.left = (shape.xPct * 100) + '%';
+      el.style.top = (shape.yPct * 100) + '%';
+      const opacity = shape.opacity === undefined ? 1 : shape.opacity;
+      el.style.background = shape.color + alphaHex(opacity);
+      el.style.borderColor = shape.color;
+
+      const label = document.createElement('div');
+      label.className = 'shape-label';
+      label.textContent = formatShapeSize(shape);
+      el.appendChild(label);
+
+      el.addEventListener('pointerdown', onShapePointerDown);
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectedShapeId = shape.shapeId;
+        selectedInstanceId = null;
+        renderMarkers();
+        renderShapes();
+        renderPlacedList();
+        renderShapeList();
+      });
+
+      shapesEl.appendChild(el);
+    }
+  }
+
+  function onShapePointerDown(e) {
+    const el = e.currentTarget;
+    const shapeId = el.dataset.shapeId;
+    el.setPointerCapture(e.pointerId);
+    let dragging = false;
+
+    function onMove(ev) {
+      dragging = true;
+      const rect = stage.getBoundingClientRect();
+      let xPct = (ev.clientX - rect.left) / rect.width;
+      let yPct = (ev.clientY - rect.top) / rect.height;
+      xPct = clamp(xPct, PLACEMENT_MIN, PLACEMENT_MAX);
+      yPct = clamp(yPct, PLACEMENT_MIN, PLACEMENT_MAX);
+      el.style.left = (xPct * 100) + '%';
+      el.style.top = (yPct * 100) + '%';
+      el.dataset.pendingX = xPct;
+      el.dataset.pendingY = yPct;
+    }
+
+    function onUp() {
+      el.removeEventListener('pointermove', onMove);
+      el.removeEventListener('pointerup', onUp);
+      if (dragging) {
+        const shape = shapes.find(s => s.shapeId === shapeId);
+        if (shape && el.dataset.pendingX !== undefined) {
+          shape.xPct = parseFloat(el.dataset.pendingX);
+          shape.yPct = parseFloat(el.dataset.pendingY);
+          saveShapes();
+        }
+      }
+    }
+
+    el.addEventListener('pointermove', onMove);
+    el.addEventListener('pointerup', onUp);
+  }
+
+  // ---- Rendering: shape list ----
+  function renderShapeList() {
+    shapeListEl.innerHTML = '';
+    if (shapes.length === 0) {
+      shapeListEl.innerHTML = '<div class="empty-msg">No shapes placed yet. Configure one above and click "Add to map".</div>';
+      return;
+    }
+    for (const shape of shapes) {
+      const card = document.createElement('div');
+      card.className = 'plant-card';
+      card.dataset.shapeId = shape.shapeId;
+      if (shape.shapeId === selectedShapeId) card.style.background = 'var(--accent-light)';
+
+      const swatch = document.createElement('div');
+      swatch.className = 'swatch';
+      swatch.style.background = shape.color;
+      if (shape.type === 'rectangle') swatch.style.borderRadius = '3px';
+
+      const info = document.createElement('div');
+      info.className = 'plant-info';
+      const typeName = shape.type === 'circle' ? 'Circle' : 'Rectangle';
+      info.innerHTML = `
+        <div class="plant-name">${typeName}</div>
+        <div class="plant-meta">${formatShapeSize(shape)}</div>
+      `;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'plant-remove';
+      removeBtn.textContent = '✕';
+      removeBtn.title = 'Remove from map';
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeShape(shape.shapeId);
+      });
+
+      card.appendChild(swatch);
+      card.appendChild(info);
+      card.appendChild(removeBtn);
+
+      card.addEventListener('click', () => {
+        selectedShapeId = shape.shapeId;
+        selectedInstanceId = null;
+        renderMarkers();
+        renderShapes();
+        renderPlacedList();
+        renderShapeList();
+        const shapeEl = shapesEl.querySelector(`[data-shape-id="${shape.shapeId}"]`);
+        if (shapeEl) shapeEl.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      });
+
+      shapeListEl.appendChild(card);
+    }
+  }
+
+  function removeShape(shapeId) {
+    shapes = shapes.filter(s => s.shapeId !== shapeId);
+    if (selectedShapeId === shapeId) selectedShapeId = null;
+    saveShapes();
+    renderShapes();
+    renderShapeList();
+  }
+
   // ---- Drop onto stage ----
   viewport.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -594,19 +812,23 @@
 
   viewport.addEventListener('click', () => {
     if (panMoved) return;
-    if (selectedInstanceId) {
+    if (selectedInstanceId || selectedShapeId) {
       selectedInstanceId = null;
+      selectedShapeId = null;
       renderMarkers();
+      renderShapes();
       renderPlacedList();
+      renderShapeList();
     }
   });
 
-  // Keyboard delete for selected marker.
+  // Keyboard delete for selected marker or shape.
   document.addEventListener('keydown', (e) => {
-    if ((e.key === 'Delete' || e.key === 'Backspace') && selectedInstanceId) {
+    if ((e.key === 'Delete' || e.key === 'Backspace') && (selectedInstanceId || selectedShapeId)) {
       const active = document.activeElement;
       if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) return;
-      removePlacement(selectedInstanceId);
+      if (selectedInstanceId) removePlacement(selectedInstanceId);
+      else if (selectedShapeId) removeShape(selectedShapeId);
     }
   });
 
@@ -639,10 +861,15 @@
     renderUnplacedList();
     renderPlacedList();
     renderMarkers();
+    renderShapes();
+    renderShapeList();
     renderStats();
   }
 
-  window.addEventListener('resize', renderMarkers);
+  window.addEventListener('resize', () => {
+    renderMarkers();
+    renderShapes();
+  });
   if (lotImage.complete) {
     renderAll();
   } else {

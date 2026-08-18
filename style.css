@@ -61,6 +61,8 @@ body {
 .btn:hover { background: var(--accent-light); }
 .btn-danger { color: var(--danger); border-color: #e0c3ba; }
 .btn-danger:hover { background: #fbebe6; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primary:hover { background: #345a34; }
 
 .layout {
   flex: 1;
@@ -113,6 +115,45 @@ body {
   position: absolute;
   inset: 0;
 }
+
+.shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(0,0,0,0.55);
+  box-sizing: border-box;
+  cursor: grab;
+}
+.shape:active { cursor: grabbing; }
+.shape.selected {
+  outline: 3px solid #2b6fd1;
+  outline-offset: 2px;
+  z-index: 4;
+}
+.shape-circle { border-radius: 50%; }
+
+.shape-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.92);
+  color: var(--text);
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  pointer-events: none;
+  display: none;
+}
+.shape.selected .shape-label { display: block; }
 
 .zoom-controls {
   position: absolute;
@@ -375,6 +416,59 @@ body {
   padding: 1px 6px;
   margin-left: 4px;
 }
+
+.shape-form {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shape-form-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.shape-select {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.shape-color {
+  width: 36px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: var(--panel);
+}
+
+.shape-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.shape-opacity-field { flex: 0 0 70px; }
+.shape-field input {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--text);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#addShapeBtn { width: 100%; }
 
 .empty-msg {
   color: var(--muted);
