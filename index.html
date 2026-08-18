@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lot Planner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <h1>Lot Planner</h1>
+    <div class="topbar-actions">
+      <span id="stats" class="stats"></span>
+      <button id="clearAllBtn" class="btn btn-danger" title="Remove all placed plants">Clear placed</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage-wrap">
+      <div id="viewport" class="viewport">
+        <div id="stage" class="stage">
+          <img id="lotImage" src="141.79ft.jpg" alt="Property top-down view" draggable="false">
+          <div id="markers" class="markers"></div>
+        </div>
+        <div class="zoom-controls">
+          <button id="zoomInBtn" class="zoom-btn" title="Zoom in">+</button>
+          <span id="zoomLevel" class="zoom-level">100%</span>
+          <button id="zoomOutBtn" class="zoom-btn" title="Zoom out">&minus;</button>
+          <button id="zoomResetBtn" class="zoom-btn zoom-btn-wide" title="Reset view">Reset</button>
+        </div>
+      </div>
+      <p class="hint">Drag a plant from the "Not Placed" list onto the map. Drag a marker to reposition it, or the background to pan. Scroll to zoom. Click a marker to select/remove it.</p>
+    </section>
+
+    <aside class="sidebar">
+      <div class="tabs">
+        <button class="tab-btn" data-tab="all">All</button>
+        <button class="tab-btn active" data-tab="unplaced">Not Placed</button>
+        <button class="tab-btn" data-tab="placed">Placed</button>
+      </div>
+
+      <input type="text" id="filterInput" class="filter-input" placeholder="Filter by name, category, color...">
+
+      <div class="tab-panel" id="panel-all">
+        <div id="allList" class="plant-list"></div>
+      </div>
+
+      <div class="tab-panel active" id="panel-unplaced">
+        <div id="unplacedList" class="plant-list"></div>
+      </div>
+
+      <div class="tab-panel" id="panel-placed">
+        <div id="placedList" class="plant-list"></div>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
