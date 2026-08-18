@@ -195,6 +195,11 @@ body {
   max-width: 140px;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: none;
+}
+
+.marker.selected .marker-label {
+  display: block;
 }
 
 .sidebar {
