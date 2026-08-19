@@ -1,4 +1,104 @@
 (function () {
+  // Plant ids used to be assigned by CSV row position (1, 2, 3, ...), which
+  // shifted every time the CSV was re-sorted or edited. Ids are now derived
+  // from each plant's category/genus/cultivar instead, which stays stable
+  // across CSV edits. This maps the old row-position ids (as they existed
+  // right before that switch) to the new stable ids, purely so placements
+  // saved under the old scheme keep working after this one-time migration.
+  const LEGACY_PLANT_ID_MIGRATION = {
+    "1": "trees-serviceberry-standing-ovation",
+    "2": "trees-serviceberry-rainbow-pillar",
+    "3": "trees-serviceberry-autumn-brilliance",
+    "4": "trees-eastern-redbud-appalachian-red",
+    "5": "trees-eastern-redbud-black-pearl",
+    "6": "trees-japanese-tree-lilac-ivory-silk",
+    "9": "trees-red-maple-red-sunset",
+    "10": "trees-red-maple-october-glory",
+    "11": "trees-red-maple-redpointe",
+    "12": "trees-tulip-tree-liriodendron-tulipifera",
+    "13": "trees-river-birch-heritage",
+    "14": "trees-eastern-white-pine-golden-candles",
+    "15": "trees-eastern-white-pine-stowe-s-pillar",
+    "16": "trees-eastern-white-pine-mini-twists",
+    "18": "trees-spruce-serbian-spruce-nana",
+    "19": "trees-mugo-pine-green-candle",
+    "20": "trees-mugo-pine-blue-shag",
+    "21": "trees-mugo-pine-jakobsen",
+    "22": "trees-bosnian-pine-emerald-arrow",
+    "23": "trees-juniper-gin-fizz",
+    "24": "trees-juniper-wichita-blue",
+    "25": "trees-juniper-torulosa",
+    "26": "trees-juniper-mint-julep",
+    "27": "trees-korean-fir-silberlocke",
+    "28": "shrubs-ninebark-summer-wine",
+    "29": "shrubs-ninebark-autumn-jubilee",
+    "30": "shrubs-ninebark-little-devil",
+    "31": "shrubs-diervilla-diervilla-lonicera-straight-species",
+    "32": "shrubs-diervilla-kodiak-black",
+    "33": "shrubs-chokeberry-brilliantissima",
+    "34": "shrubs-chokeberry-autumn-magic",
+    "35": "shrubs-chokeberry-low-scape-mound",
+    "36": "shrubs-american-hazelnut-corylus-americana-straight-species",
+    "37": "shrubs-virginia-sweetspire-henry-s-garnet",
+    "38": "shrubs-virginia-sweetspire-scentlandia",
+    "39": "shrubs-panicle-hydrangea-limelight",
+    "40": "shrubs-panicle-hydrangea-torch",
+    "41": "shrubs-panicle-hydrangea-quick-fire",
+    "42": "shrubs-fothergilla-mount-airy",
+    "43": "shrubs-fothergilla-legend-of-the-fall",
+    "44": "shrubs-fothergilla-blue-shadow",
+    "45": "perennials-daffodils-thalia",
+    "46": "perennials-daffodils-white-lion",
+    "47": "perennials-daffodils-poeticus-recurvus",
+    "48": "perennials-daffodils-tahiti",
+    "49": "perennials-alliums-jackpot",
+    "50": "perennials-camassia-caerulea",
+    "51": "perennials-leucojum-gravetye-giant",
+    "52": "perennials-bearded-iris-repeat-the-blues",
+    "53": "perennials-bearded-iris-rhizome-cowboy",
+    "54": "perennials-bearded-iris-summer-olympics",
+    "55": "perennials-bearded-iris-mother-earth",
+    "57": "perennials-baptisia-american-goldfinch",
+    "58": "perennials-baptisia-lemon-meringue",
+    "59": "perennials-columbine-eastern-red-columbine",
+    "60": "perennials-garden-phlox-jeana",
+    "61": "perennials-garden-phlox-david",
+    "62": "perennials-veronica-veronicastrum-virginicum",
+    "63": "perennials-catmint-walker-s-low",
+    "64": "perennials-penstemon-digitalis",
+    "66": "perennials-monarda-jacob-cline",
+    "67": "perennials-liatris-spicata",
+    "68": "perennials-rudbeckia-herbstsonne",
+    "69": "perennials-rudbeckia-goldsturm",
+    "70": "perennials-heliopsis-sunstruck",
+    "71": "perennials-asters-wood-s-light-blue",
+    "72": "perennials-asters-purple-dome",
+    "73": "perennials-asters-raydon-s-favorite",
+    "74": "perennials-solidago-fireworks",
+    "76": "perennials-japanese-anemone-honorine-jobert",
+    "77": "perennials-japanese-anemone-wild-swan",
+    "78": "perennials-hollyhocks-alcea-rugosa",
+    "79": "perennials-joe-pye-weed-purpureum",
+    "80": "perennials-joe-pye-weed-baby-joe",
+    "81": "perennials-helianthus-flore-pleno",
+    "82": "grasses-little-bluestem-the-blues",
+    "85": "grasses-switchgrass-northwind",
+    "86": "grasses-switchgrass-shenandoah",
+    "87": "grasses-big-bluestem-blackhawks",
+    "88": "low-filler-plants-creeping-phlox-emerald-blue",
+    "89": "low-filler-plants-creeping-thyme-elfin",
+    "90": "low-filler-plants-creeping-thyme-purple-carpet",
+    "91": "low-filler-plants-hardy-geranium-rozanne",
+    "92": "low-filler-plants-low-sedums-voodoo",
+    "93": "low-filler-plants-low-sedums-angelina",
+    "94": "low-filler-plants-low-sedums-blue-spruce",
+    "95": "low-filler-plants-lamb-s-ear-silver-carpet",
+    "96": "low-filler-plants-iberis-sempervirens-snowsation",
+    "97": "vines-grapes-somerset-seedless",
+    "98": "vines-grapes-candice",
+    "99": "vines-clematis-virginiana"
+  };
+
   const STORAGE_KEY = 'lotPlanner.placements.v1';
   const STORAGE_KEY_SHAPES = 'lotPlanner.shapes.v1';
   const IMAGE_WIDTH_FT = LOT_DATA.imageWidthFt;
@@ -56,9 +156,17 @@
   }
 
   // ---- State ----
+  // Set by loadPlacements() when saved placements reference plant ids that
+  // no longer exist (e.g. the plant catalog CSV was edited/reordered since
+  // they were saved) — surfaced to the user via a dismissible banner rather
+  // than silently discarding their data.
+  let droppedPlacementCount = 0;
   let placements = loadPlacements(); // [{instanceId, plantId, xPct, yPct}]
   let selectedInstanceId = null;
   let filterText = '';
+  let seasonFilter = 'all';
+  let heightMin = 0;
+  let heightMax = Infinity;
 
   // [{shapeId, type: 'circle'|'rectangle', color, diameterFt, widthFt, heightFt, xPct, yPct}]
   let shapes = loadShapes();
@@ -68,7 +176,22 @@
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return [];
-      return JSON.parse(raw);
+      const parsed = JSON.parse(raw);
+      let migrated = false;
+      for (const p of parsed) {
+        const legacyId = LEGACY_PLANT_ID_MIGRATION[p.plantId];
+        if (legacyId) {
+          p.plantId = legacyId;
+          migrated = true;
+        }
+      }
+      const kept = parsed.filter(p => PLANTS_BY_ID[p.plantId]);
+      droppedPlacementCount = parsed.length - kept.length;
+      if (migrated || droppedPlacementCount > 0) {
+        // Persist right away so this migration/cleanup only has to run once.
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(kept));
+      }
+      return kept;
     } catch (e) {
       console.warn('Failed to load placements', e);
       return [];
@@ -130,6 +253,15 @@
   const circleFields = document.getElementById('circleFields');
   const rectFields = document.getElementById('rectFields');
   const addShapeBtn = document.getElementById('addShapeBtn');
+  const seasonFilterEl = document.getElementById('seasonFilter');
+  const heightMinInput = document.getElementById('heightMinInput');
+  const heightMaxInput = document.getElementById('heightMaxInput');
+  const heightSliderRange = document.getElementById('heightSliderRange');
+  const heightRangeLabel = document.getElementById('heightRangeLabel');
+  const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+  const exportBtn = document.getElementById('exportBtn');
+  const importBtn = document.getElementById('importBtn');
+  const importFileInput = document.getElementById('importFileInput');
 
   // ---- Tabs ----
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -196,6 +328,90 @@
     saveShapes();
     renderAll();
   });
+
+  // ---- Season / height filters ----
+  // Bounds come from the actual plant data so the slider always spans the
+  // full range regardless of what's in the CSV.
+  const ALL_HEIGHTS = PLANTS.flatMap(p => [p.heightMinFt, p.heightMaxFt]).filter(v => v != null);
+  const HEIGHT_BOUND_MIN = Math.floor(Math.min(...ALL_HEIGHTS));
+  const HEIGHT_BOUND_MAX = Math.ceil(Math.max(...ALL_HEIGHTS));
+  const HEIGHT_STEP = 0.5;
+
+  heightMinInput.min = heightMaxInput.min = HEIGHT_BOUND_MIN;
+  heightMinInput.max = heightMaxInput.max = HEIGHT_BOUND_MAX;
+  heightMinInput.step = heightMaxInput.step = HEIGHT_STEP;
+  heightMinInput.value = HEIGHT_BOUND_MIN;
+  heightMaxInput.value = HEIGHT_BOUND_MAX;
+  heightMin = HEIGHT_BOUND_MIN;
+  heightMax = HEIGHT_BOUND_MAX;
+
+  function formatHeightFt(ft) {
+    return (Math.round(ft * 10) / 10) + ' ft';
+  }
+
+  function updateHeightSliderUI() {
+    const lo = parseFloat(heightMinInput.value);
+    const hi = parseFloat(heightMaxInput.value);
+    const span = HEIGHT_BOUND_MAX - HEIGHT_BOUND_MIN || 1;
+    const loPct = ((lo - HEIGHT_BOUND_MIN) / span) * 100;
+    const hiPct = ((hi - HEIGHT_BOUND_MIN) / span) * 100;
+    heightSliderRange.style.left = loPct + '%';
+    heightSliderRange.style.right = (100 - hiPct) + '%';
+    heightRangeLabel.textContent = `${formatHeightFt(lo)} – ${formatHeightFt(hi)}`;
+  }
+
+  function onHeightInputChange() {
+    let lo = parseFloat(heightMinInput.value);
+    let hi = parseFloat(heightMaxInput.value);
+    if (lo > hi) {
+      // Keep the two thumbs from crossing by clamping the one that just moved.
+      if (document.activeElement === heightMinInput) { lo = hi; heightMinInput.value = lo; }
+      else { hi = lo; heightMaxInput.value = hi; }
+    }
+    heightMin = lo;
+    heightMax = hi;
+    updateHeightSliderUI();
+    applyMapFilters();
+  }
+
+  heightMinInput.addEventListener('input', onHeightInputChange);
+  heightMaxInput.addEventListener('input', onHeightInputChange);
+  updateHeightSliderUI();
+
+  seasonFilterEl.addEventListener('change', () => {
+    seasonFilter = seasonFilterEl.value;
+    applyMapFilters();
+  });
+
+  resetFiltersBtn.addEventListener('click', () => {
+    seasonFilter = 'all';
+    seasonFilterEl.value = 'all';
+    heightMin = HEIGHT_BOUND_MIN;
+    heightMax = HEIGHT_BOUND_MAX;
+    heightMinInput.value = HEIGHT_BOUND_MIN;
+    heightMaxInput.value = HEIGHT_BOUND_MAX;
+    updateHeightSliderUI();
+    applyMapFilters();
+  });
+
+  function plantMatchesMapFilters(plant) {
+    if (!plant) return true;
+    if (seasonFilter !== 'all' && !plant.seasons.includes(seasonFilter)) return false;
+    const plantMin = plant.heightMinFt != null ? plant.heightMinFt : plant.heightFt;
+    const plantMax = plant.heightMaxFt != null ? plant.heightMaxFt : plant.heightFt;
+    if (plantMin != null && plantMax != null && (plantMax < heightMin || plantMin > heightMax)) return false;
+    return true;
+  }
+
+  // Fades placed markers on the map that don't match the current season/
+  // height filters, without removing them from placements or the lists.
+  function applyMapFilters() {
+    for (const el of markersEl.children) {
+      const inst = placements.find(p => p.instanceId === el.dataset.instanceId);
+      const plant = inst ? PLANTS_BY_ID[inst.plantId] : null;
+      el.classList.toggle('filtered-out', !plantMatchesMapFilters(plant));
+    }
+  }
 
   // ---- Scale ----
   // Uses the viewport's laid-out (untransformed) width so marker sizes stay
@@ -485,7 +701,7 @@
     const count = placedCountForPlant(plant.id);
     info.innerHTML = `
       <div class="plant-name">${plant.displayName}${count > 0 ? `<span class="count-badge">×${count} placed</span>` : ''}</div>
-      <div class="plant-meta">${plant.category} · ${plant.width} wide · ${plant.color}</div>
+      <div class="plant-meta">${plant.height} tall · ${plant.width} wide · ${plant.color}</div>
     `;
 
     card.appendChild(swatch);
@@ -604,6 +820,7 @@
 
       markersEl.appendChild(marker);
     }
+    applyMapFilters();
   }
 
   function onMarkerPointerDown(e) {
@@ -800,7 +1017,7 @@
 
   viewport.addEventListener('drop', (e) => {
     e.preventDefault();
-    const plantId = parseInt(e.dataTransfer.getData('text/plain'), 10);
+    const plantId = e.dataTransfer.getData('text/plain');
     if (!plantId || !PLANTS_BY_ID[plantId]) return;
     const rect = stage.getBoundingClientRect();
     let xPct = (e.clientX - rect.left) / rect.width;
@@ -848,6 +1065,89 @@
     renderAll();
   }
 
+  // ---- Export / import ----
+  exportBtn.addEventListener('click', () => {
+    const payload = {
+      type: 'lot-planner-export',
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      placements,
+      shapes,
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const stamp = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `lot-planner-${stamp}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  let pendingImport = null;
+  let importArmTimer = null;
+
+  function resetImportBtn() {
+    pendingImport = null;
+    clearTimeout(importArmTimer);
+    importBtn.textContent = 'Import';
+    importBtn.classList.remove('btn-danger');
+  }
+
+  function applyImport(data) {
+    placements = data.placements.filter(p => PLANTS_BY_ID[p.plantId]);
+    shapes = data.shapes;
+    selectedInstanceId = null;
+    selectedShapeId = null;
+    savePlacements();
+    saveShapes();
+    renderAll();
+  }
+
+  importBtn.addEventListener('click', () => {
+    if (pendingImport) {
+      const data = pendingImport;
+      resetImportBtn();
+      applyImport(data);
+      return;
+    }
+    importFileInput.click();
+  });
+
+  importFileInput.addEventListener('change', () => {
+    const file = importFileInput.files[0];
+    importFileInput.value = '';
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      let data;
+      try {
+        data = JSON.parse(reader.result);
+      } catch (e) {
+        window.alert('That file is not valid JSON.');
+        return;
+      }
+      if (!Array.isArray(data.placements) || !Array.isArray(data.shapes)) {
+        window.alert('That file does not look like a Lot Planner export.');
+        return;
+      }
+      if (placements.length === 0 && shapes.length === 0) {
+        applyImport(data);
+        return;
+      }
+      // Existing map data present — arm the button instead of using a
+      // blocking native confirm() dialog.
+      pendingImport = data;
+      importBtn.textContent = 'Click to confirm (replaces map)';
+      importBtn.classList.add('btn-danger');
+      clearTimeout(importArmTimer);
+      importArmTimer = setTimeout(resetImportBtn, 5000);
+    };
+    reader.readAsText(file);
+  });
+
   // ---- Stats ----
   function renderStats() {
     const placedCount = placements.length;
@@ -864,6 +1164,18 @@
     renderShapes();
     renderShapeList();
     renderStats();
+  }
+
+  if (droppedPlacementCount > 0) {
+    const banner = document.createElement('div');
+    banner.className = 'notice-banner';
+    banner.innerHTML = `<span>${droppedPlacementCount} previously placed plant${droppedPlacementCount === 1 ? '' : 's'} could not be matched to the current plant list (it may have been edited) and ${droppedPlacementCount === 1 ? 'was' : 'were'} not restored.</span>`;
+    const dismiss = document.createElement('button');
+    dismiss.className = 'notice-banner-dismiss';
+    dismiss.textContent = '✕';
+    dismiss.addEventListener('click', () => banner.remove());
+    banner.appendChild(dismiss);
+    document.querySelector('.app').insertBefore(banner, document.querySelector('.filterbar'));
   }
 
   window.addEventListener('resize', () => {

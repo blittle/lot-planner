@@ -1,100 +1,106 @@
 Main Category,Plant Name / Genus,Cultivar / Variety,Height,Width,Color / Characteristics,Bloom Time,Plant Spacing
-Trees,Serviceberry,Standing Ovation,12–15 ft,3–4 ft,"White flowers, red/dark berries",Spring,4–6 ft
-Trees,,Rainbow Pillar,15–20 ft,8–10 ft,"White flowers, dark purple berries",Spring,8–10 ft
-Trees,,Autumn Brilliance,20–25 ft,15–20 ft,"White flowers, orange-red fall foliage",Spring,15–20 ft
-Trees,Eastern redbud,Appalachian Red,15–25 ft,15–25 ft,Fuchsia/bright pink-red flowers,Early Spring,15–20 ft
-Trees,,Black Pearl,15–20 ft,15–20 ft,"Lavender-pink, dark purple/black foliage",Early Spring,15–20 ft
-Trees,Japanese tree lilac,Ivory Silk,20–25 ft,15–20 ft,Creamy white fragrant flowers,Early Summer (June),15–20 ft
-Trees,White oak,Straight species,50–80 ft,50–80 ft,"Inconspicuous blooms, red/wine fall color",Spring,30–40 ft
-Trees,Red oak,Straight species,60–75 ft,45–50 ft,"Inconspicuous blooms, bright red fall foliage",Spring,30–40 ft
-Trees,Red maple,Red Sunset,45–50 ft,35–40 ft,"Red flowers, brilliant red fall foliage",Early Spring,25–30 ft
-Trees,,October Glory,40–50 ft,30–40 ft,"Red flowers, deep crimson fall foliage",Early Spring,25–30 ft
-Trees,,Redpointe,40–45 ft,25–30 ft,"Red flowers, bright red fall color",Early Spring,20–25 ft
-Trees,Tulip tree,Liriodendron tulipifera,70–90 ft,35–50 ft,Tulip-shaped yellow-green & orange flowers,Late Spring,35–40 ft
-Trees,River birch,Heritage,40–50 ft,30–40 ft,Exfoliating creamy salmon bark,Spring,25–30 ft
-Trees,Eastern white pine,Golden Candles,20–30 ft,10–15 ft,"Golden yellow needle tips, evergreen",Year-round,12–15 ft
-Trees,,Stowe's Pillar,8–10 ft,2–3 ft,"Blue-green needles, columnar foliage",Year-round,3–4 ft
-Trees,,Mini Twists,4–6 ft,3–4 ft,Twisted blue-green needles,Year-round,4–5 ft
-Trees,Eastern red cedar,Straight species,30–40 ft,8–15 ft,"Dark green/bronze evergreen, blue cones",Year-round,10–15 ft
-Trees,Spruce,Serbian spruce 'Nana',8–10 ft,8–10 ft,"Blue-green and silver needles, dwarf cone",Year-round,8–10 ft
-Trees,Mugo Pine,Green Candle,3–5 ft,3–4 ft,Rich green needles with showy white candles,Year-round,3–4 ft
-Trees,,Blue Shag,2–4 ft,2–4 ft,"Soft blue-green needles, mounding",Year-round,3–4 ft
-Trees,,Jakobsen,1–2 ft,2–3 ft,"Dark green needles, bonsai-like habit",Year-round,2–3 ft
-Trees,Bosnian Pine,Emerald Arrow,12–15 ft,4–6 ft,"Deep emerald green needles, columnar",Year-round,5–6 ft
-Trees,Juniper,Gin Fizz,10–18 ft,7–10 ft,"Blue-green foliage, heavy blue berries",Year-round,6–8 ft
-Trees,,Wichita Blue,10–15 ft,4–6 ft,"Bright sky-blue foliage, upright pyramidal",Year-round,5–6 ft
-Trees,,Torulosa,12–15 ft,6–8 ft,"Rich green twisted foliage, sculptural habit",Year-round,6–8 ft
-Trees,,Mint Julep,3–5 ft,4–6 ft,"Mint-green foliage, arching branches",Year-round,4–5 ft
-Trees,Korean Fir,Silberlocke,10–15 ft,6–8 ft,Curled green needles showing silver undersides,Year-round,6–8 ft
-Shrubs,Ninebark,Summer Wine,5–6 ft,5–6 ft,"Pinkish-white flowers, dark purple foliage",Late Spring / Early Summer,5–6 ft
-Shrubs,,Autumn Jubilee,5–6 ft,4–5 ft,"White flowers, golden-orange/purple fall foliage",Late Spring,4–5 ft
-Shrubs,,Little Devil,3–4 ft,3–4 ft,"Pinkish-white button flowers, dark burgundy foliage",Late Spring,3–4 ft
-Shrubs,Diervilla,Diervilla lonicera (straight species),2–3 ft,3–4 ft,"Yellow trumpet flowers, red fall foliage",Early to Mid Summer,3–4 ft
-Shrubs,,Kodiak Black,3–4 ft,3–4 ft,"Bright yellow flowers, dark purple/black foliage",Early to Late Summer,3–4 ft
-Shrubs,Chokeberry,Brilliantissima,6–8 ft,6–8 ft,"White flowers, red berries & fiery red fall foliage",Spring,6–8 ft
-Shrubs,,Autumn Magic,3–5 ft,2–4 ft,"White flowers, dark purple berries & red fall color",Spring,3–4 ft
-Shrubs,,Low Scape Mound,1–2 ft,2 ft,"White flowers, black berries, brilliant red fall foliage",Spring,1.5–2 ft
-Shrubs,American hazelnut,Corylus americana (straight species),8–12 ft,8–10 ft,"Yellow catkins, edible hazelnuts, orange/purple fall color",Early Spring (Catkins),8–10 ft
-Shrubs,Virginia sweetspire,Henry's Garnet,3–5 ft,4–6 ft,"Fragrant white bottle-brush flowers, garnet fall color",Early Summer,4–5 ft
-Shrubs,,Scentlandia,2–3 ft,2–3 ft,"Highly fragrant white flowers, intense red-purple fall color",Early Summer,2–3 ft
-Shrubs,Panicle hydrangea,Limelight,6–8 ft,6–8 ft,Lime green fading to white & pink blooms,Mid Summer to Fall,6–8 ft
-Shrubs,,Torch,3–5 ft,3–4 ft,Early blooming white to deep pink panicles,Early Summer to Fall,3–4 ft
-Shrubs,,Quick Fire,6–8 ft,6–8 ft,White flowers aging quickly to deep rose-pink,Early Summer to Fall,6–8 ft
-Shrubs,Fothergilla,Mount Airy,3–5 ft,3–4 ft,"Honey-scented white brush flowers, brilliant yellow-orange fall color",Spring,3–4 ft
-Shrubs,,Legend of the Fall,4–5 ft,4–5 ft,"White bottle-brush flowers, vibrant multi-colored fall foliage",Spring,4–5 ft
-Shrubs,,Blue Shadow,4–5 ft,4–5 ft,"White flowers, powdery blue summer foliage & fiery fall color",Spring,4–5 ft
-Perennials,Daffodils,Thalia,12–16 in,6 in,Pure white fragrant orchid-like blooms,Mid to Late Spring,4–6 in
-Perennials,,White Lion,14–18 in,6 in,Double creamy white with yellow/apricot center,Mid to Late Spring,4–6 in
-Perennials,,Poeticus Recurvus,14–16 in,6 in,White reflexed petals with tiny red-edged yellow cup,Late Spring,4–6 in
-Perennials,,Tahiti,14–16 in,6 in,Double golden yellow with orange-red accent petals,Mid Spring,4–6 in
-Perennials,Alliums,Jackpot,18–24 in,12–18 in,Large violet-purple globe clusters,Late Spring / Early Summer,12–15 in
-Perennials,Camassia,Caerulea,24–30 in,8–12 in,Star-shaped bright blue flower spikes,Late Spring,6–8 in
-Perennials,Leucojum,Gravetye Giant,18–24 in,8–12 in,White bell-shaped flowers tipped with green,Mid to Late Spring,6–8 in
-Perennials,Bearded iris,Repeat The Blues,32–36 in,18–24 in,Soft lavender-blue reblooming flowers,Late Spring & Early Fall,18–24 in
-Perennials,,Rhizome Cowboy,34–38 in,18–24 in,Tan/copper falls with violet-blue centers,Late Spring,18–24 in
-Perennials,,Summer Olympics,30–36 in,18–24 in,Cool yellow reblooming ruffled flowers,Late Spring & Late Summer,18–24 in
-Perennials,,Mother Earth,34–36 in,18–24 in,Buff pink standards with lavender-blue falls,Late Spring,18–24 in
-Perennials,Baptisia,Straight species,3–4 ft,3–4 ft,Deep blue pea-like flowers,Late Spring / Early Summer,3–4 ft
-Perennials,,American Goldfinch,3–3.5 ft,3.5–4 ft,Bright golden yellow flower spikes,Late Spring / Early Summer,3.5–4 ft
-Perennials,,Lemon Meringue,3 ft,3 ft,Lemon yellow flower spikes on dark charcoal stems,Late Spring / Early Summer,3 ft
-Perennials,Columbine,Eastern red columbine,18–24 in,12–18 in,Red and yellow bell-shaped drooping flowers,Late Spring to Early Summer,12–15 in
-Perennials,Garden phlox,Jeana,3–4 ft,2–3 ft,Fragrant magenta-pink flower clusters (mildew resistant),Mid Summer to Fall,2–2.5 ft
-Perennials,,David,3–4 ft,2–3 ft,Fragrant pure white large flower heads,Mid Summer to Fall,2–2.5 ft
-Perennials,Veronica,Veronicastrum virginicum,4–6 ft,2–3 ft,Pale blue to white slender candle-like spires,Mid to Late Summer,2–3 ft
-Perennials,Catmint,Walker's Low,24–30 in,24–36 in,Lavender-blue aromatic flower spikes,Late Spring to Fall,24–30 in
-Perennials,Penstemon,digitalis,3–4 ft,1.5–2 ft,"White tubular bell flowers, dark foliage accent",Late Spring to Early Summer,18 in
-Perennials,Echinacea,straight species,2–4 ft,1.5–2 ft,Purple-pink petals with orange cone center,Early Summer to Early Fall,18–24 in
-Perennials,Monarda,Jacob Cline,3–4 ft,2–3 ft,Scarlet red whorled tubular flowers,Mid to Late Summer,2–2.5 ft
-Perennials,Liatris,Spicata,2–4 ft,1–1.5 ft,Purple fuzzy flower wands,Mid Summer,12–15 in
-Perennials,Rudbeckia,Herbstsonne,5–7 ft,3–4 ft,Bright yellow drooping petals with green central cone,Late Summer to Fall,3 ft
-Perennials,,Goldsturm,2–3 ft,1.5–2 ft,Golden yellow daisy-like rays with dark brown cone,Mid Summer to Early Fall,18–24 in
-Perennials,Heliopsis,Sunstruck,14–16 in,12–14 in,Golden yellow blooms with variegated white/green foliage,Summer to Early Fall,12–14 in
-Perennials,Asters,Wood's Light Blue,12–18 in,12–18 in,Clear blue daisy-like flowers with yellow centers,Late Summer to Fall,12–15 in
-Perennials,,Purple Dome,18–24 in,24–30 in,Deep royal purple dense flowers,Late Summer to Fall,20–24 in
-Perennials,,Raydon's Favorite,2–3 ft,2–3 ft,Aromatic lavender-blue starry blooms,Late Summer to Fall,2–2.5 ft
-Perennials,Solidago,Fireworks,3–4 ft,2–3 ft,Golden yellow arching spray clusters,Late Summer to Fall,2–2.5 ft
-Perennials,Boltonia,Straight species,4–5 ft,3–4 ft,White daisy-like flowers in profusion,Late Summer to Fall,3 ft
-Perennials,Japanese anemone,Honorine Jobert,3–4 ft,2–3 ft,Single pure white blooms with yellow stamens,Late Summer to Fall,2–2.5 ft
-Perennials,,Wild Swan,18–24 in,18–24 in,White petals with lavender-blue reverse streaks,Early Summer to Frost,18–20 in
-Perennials,Hollyhocks,Alcea rugosa,5–7 ft,2–3 ft,Single pale yellow trumpet flowers (rust resistant),Early to Mid Summer,2–3 ft
-Perennials,Joe Pye Weed,Purpureum,5–7 ft,3–4 ft,Mauve-purple large fragrant flower domes,Mid Summer to Fall,3–4 ft
-Perennials,,Baby Joe,2–3 ft,1.5–2 ft,Dwarf dusty pink/mauve flower heads,Mid Summer to Fall,2 ft
-Perennials,Helianthus,Flore Pleno,4–6 ft,2–3 ft,Double bright yellow pom-pom flowers,Late Summer to Fall,2.5–3 ft
-Grasses,Little bluestem,The Blues,2–3 ft,1.5–2 ft,Blue-stemmed grass with bronze-red fall color,Late Summer (Plumes),1.5–2 ft
-Grasses,,Straight species,2–4 ft,1.5–2 ft,"Blue-green summer foliage, copper fall color",Late Summer (Plumes),1.5–2 ft
+Grasses,Little bluestem,The Blues,2–3 ft,1.5–2 ft,Blue-stemmed grass with bronze-red fall color,Late Summer,1.5–2 ft
 Grasses,Prairie dropseed,Straight species,2–3 ft,2–3 ft,"Fine green fountain foliage, fragrant copper blooms",Late Summer,2–2.5 ft
-Grasses,Switchgrass,Northwind,4–6 ft,2–3 ft,"Olive green tight upright grass, yellow fall color",Late Summer,2–2.5 ft
-Grasses,,Shenandoah,3–4 ft,2–2.5 ft,Green blades with fiery red/burgundy tips,Late Summer,2 ft
+Grasses,Little bluestem,Straight species,2–4 ft,1.5–2 ft,"Blue-green summer foliage, copper fall color",Late Summer,1.5–2 ft
+Grasses,Switchgrass,Shenandoah,3–4 ft,2–2.5 ft,Green blades with fiery red/burgundy tips,Late Summer,2 ft
 Grasses,Big bluestem,Blackhawks,4–5 ft,2–2.5 ft,Dark green turning deep purple to near-black,Late Summer,2 ft
-Low/filler plants,Creeping phlox,Emerald Blue,4–6 in,18–24 in,"Lavender-blue star flowers, evergreen mat",Mid Spring,12–18 in
+Grasses,Switchgrass,Northwind,4–6 ft,2–3 ft,"Olive green tight upright grass, yellow fall color",Late Summer,2–2.5 ft
 Low/filler plants,Creeping thyme,Elfin,1–2 in,8–12 in,"Pale pink/lavender tiny blooms, aromatic mat",Early Summer,6–8 in
-Low/filler plants,,Purple Carpet,2–4 in,12–18 in,Vibrant purple-magenta floral carpet,Early Summer,10–12 in
-Low/filler plants,Hardy geranium,Rozanne,12–18 in,24–36 in,Violet-blue flowers with white centers,Late Spring to Frost,18–24 in
-Low/filler plants,Low sedums,Voodoo,3–6 in,12–18 in,"Deep crimson-red foliage, rosy-pink flowers",Mid to Late Summer,10–12 in
-Low/filler plants,,Angelina,3–6 in,12–18 in,"Golden yellow needle foliage, amber in winter",Mid Summer,10–12 in
-Low/filler plants,,Blue Spruce,4–6 in,12–18 in,"Blue-green spruce-like foliage, yellow flowers",Mid Summer,10–12 in
-Low/filler plants,Lamb's ear,Silver carpet,6–8 in,18–24 in,Soft velvety silver foliage (non-blooming mat),Foliage focus,12–15 in
+Low/filler plants,Hardy geranium,Rozanne,12–18 in,24–36 in,Violet-blue flowers with white centers,"Early Summer, Mid Summer, Late Summer, Fall",18–24 in
+Low/filler plants,Creeping thyme,Purple Carpet,2–4 in,12–18 in,Vibrant purple-magenta floral carpet,Early Summer,10–12 in
+Low/filler plants,Low sedums,Voodoo,3–6 in,12–18 in,"Deep crimson-red foliage, rosy-pink flowers",Late Summer,10–12 in
+Low/filler plants,Low sedums,Angelina,3–6 in,12–18 in,"Golden yellow needle foliage, amber in winter",Mid Summer,10–12 in
+Low/filler plants,Low sedums,Blue Spruce,4–6 in,12–18 in,"Blue-green spruce-like foliage, yellow flowers",Mid Summer,10–12 in
+Low/filler plants,Creeping phlox,Emerald Blue,4–6 in,18–24 in,"Lavender-blue star flowers, evergreen mat",Spring,12–18 in
 Low/filler plants,Iberis sempervirens,Snowsation,6–8 in,12–15 in,"Pure white dense flower clusters, evergreen",Spring,10–12 in
-Vines,Grapes,Somerset Seedless,15–20 ft,6–10 ft,"Inconspicuous blooms, sweet strawberry-flavored red grapes",Late Summer (Fruit),8–10 ft
-Vines,,Candice,15–20 ft,6–10 ft,"Inconspicuous blooms, sweet red seedless grapes",Late Summer (Fruit),8–10 ft
-Vines,Clematis,Virginiana,12–20 ft,3–6 ft,"Fragrant white starry flower clusters, feathery seed heads",Late Summer to Fall,4–6 ft
+Low/filler plants,Lamb's ear,Silver carpet,6–8 in,18–24 in,Soft velvety silver foliage (non-blooming mat),Mid Summer,12–15 in
+Perennials,Daffodils,Thalia,12–16 in,6 in,Pure white fragrant orchid-like blooms,Spring,4–6 in
+Perennials,Asters,Wood's Light Blue,12–18 in,12–18 in,Clear blue daisy-like flowers with yellow centers,Fall,12–15 in
+Perennials,Heliopsis,Sunstruck,14–16 in,12–14 in,Golden yellow blooms with variegated white/green foliage,Mid Summer,12–14 in
+Perennials,Daffodils,Poeticus Recurvus,14–16 in,6 in,White reflexed petals with tiny red-edged yellow cup,Spring,4–6 in
+Perennials,Daffodils,Tahiti,14–16 in,6 in,Double golden yellow with orange-red accent petals,Spring,4–6 in
+Perennials,Daffodils,White Lion,14–18 in,6 in,Double creamy white with yellow/apricot center,Spring,4–6 in
+Perennials,Alliums,Jackpot,18–24 in,12–18 in,Large violet-purple globe clusters,Early Summer,12–15 in
+Perennials,Columbine,Eastern red columbine,18–24 in,12–18 in,Red and yellow bell-shaped drooping flowers,Early Summer,12–15 in
+Perennials,Japanese anemone,Wild Swan,18–24 in,18–24 in,White petals with lavender-blue reverse streaks,Late Summer,18–20 in
+Perennials,Asters,Purple Dome,18–24 in,24–30 in,Deep royal purple dense flowers,Fall,20–24 in
+Perennials,Leucojum,Gravetye Giant,18–24 in,8–12 in,White bell-shaped flowers tipped with green,Spring,6–8 in
+Perennials,Rudbeckia,Goldsturm,2–3 ft,1.5–2 ft,Golden yellow daisy-like rays with dark brown cone,Mid Summer,18–24 in
+Perennials,Joe Pye Weed,Baby Joe,2–3 ft,1.5–2 ft,Dwarf dusty pink/mauve flower heads,Late Summer,2 ft
+Perennials,Asters,Raydon's Favorite,2–3 ft,2–3 ft,Aromatic lavender-blue starry blooms,Fall,2–2.5 ft
+Perennials,Liatris,Spicata,2–4 ft,1–1.5 ft,Purple fuzzy flower wands,Mid Summer,12–15 in
+Perennials,Echinacea,straight species,2–4 ft,1.5–2 ft,Purple-pink petals with orange cone center,"Mid Summer, Late Summer",18–24 in
+Perennials,Catmint,Walker's Low,24–30 in,24–36 in,Lavender-blue aromatic flower spikes,"Early Summer, Late Summer",24–30 in
+Perennials,Camassia,Caerulea,24–30 in,8–12 in,Star-shaped bright blue flower spikes,Late Spring,6–8 in
+Perennials,Baptisia,Lemon Meringue,3 ft,3 ft,Lemon yellow flower spikes on dark charcoal stems,Early Summer,3 ft
+Perennials,Baptisia,American Goldfinch,3–3.5 ft,3.5–4 ft,Bright golden yellow flower spikes,Early Summer,3.5–4 ft
+Perennials,Penstemon,digitalis,3–4 ft,1.5–2 ft,"White tubular bell flowers, dark foliage accent",Early Summer,18 in
+Perennials,Garden phlox,Jeana,3–4 ft,2–3 ft,Fragrant magenta-pink flower clusters (mildew resistant),"Mid Summer, Late Summer",2–2.5 ft
+Perennials,Garden phlox,David,3–4 ft,2–3 ft,Fragrant pure white large flower heads,"Mid Summer, Late Summer",2–2.5 ft
+Perennials,Monarda,Jacob Cline,3–4 ft,2–3 ft,Scarlet red whorled tubular flowers,Early Summer,2–2.5 ft
+Perennials,Solidago,Fireworks,3–4 ft,2–3 ft,Golden yellow arching spray clusters,"Late Summer, Fall",2–2.5 ft
+Perennials,Japanese anemone,Honorine Jobert,3–4 ft,2–3 ft,Single pure white blooms with yellow stamens,Late Summer,2–2.5 ft
+Perennials,Baptisia,Straight species,3–4 ft,3–4 ft,Deep blue pea-like flowers,Early Summer,3–4 ft
+Perennials,Bearded iris,Summer Olympics,30–36 in,18–24 in,Cool yellow reblooming ruffled flowers,Spring,18–24 in
+Perennials,Bearded iris,Repeat The Blues,14 in,18–24 in,Soft lavender-blue reblooming flowers,Spring,18–24 in
+Perennials,Bearded iris,Mother Earth,34–36 in,18–24 in,Buff pink standards with lavender-blue falls,Spring,18–24 in
+Perennials,Bearded iris,Rhizome Cowboy,34–38 in,18–24 in,Tan/copper falls with violet-blue centers,Spring,18–24 in
+Perennials,Boltonia,Straight species,4–5 ft,3–4 ft,White daisy-like flowers in profusion,Late Summer,3 ft
+Perennials,Veronica,Veronicastrum virginicum,4–6 ft,2–3 ft,Pale blue to white slender candle-like spires,Mid Summer,2–3 ft
+Perennials,Helianthus,Flore Pleno,4–6 ft,2–3 ft,Double bright yellow pom-pom flowers,Late Summer,2.5–3 ft
+Perennials,Hollyhocks,Alcea rugosa,5–7 ft,2–3 ft,Single pale yellow trumpet flowers (rust resistant),Mid Summer,2–3 ft
+Perennials,Rudbeckia,Herbstsonne,5–7 ft,3–4 ft,Bright yellow drooping petals with green central cone,"Mid Summer, Late Summer",3 ft
+Perennials,Joe Pye Weed,Purpureum,5–7 ft,3–4 ft,Mauve-purple large fragrant flower domes,Late Summer,3–4 ft
+Shrubs,Chokeberry,Low Scape Mound,1–2 ft,2 ft,"White flowers, black berries, brilliant red fall foliage",Spring,1.5–2 ft
+Shrubs,Virginia sweetspire,Scentlandia,2–3 ft,2–3 ft,"Highly fragrant white flowers, intense red-purple fall color",Early Summer,2–3 ft
+Shrubs,Diervilla,Diervilla lonicera (straight species),2–3 ft,3–4 ft,"Yellow trumpet flowers, red fall foliage",Early Summer,3–4 ft
+Shrubs,Ninebark,Little Devil,3–4 ft,3–4 ft,"Pinkish-white button flowers, dark burgundy foliage",Spring,3–4 ft
+Shrubs,Diervilla,Kodiak Black,3–4 ft,3–4 ft,"Bright yellow flowers, dark purple/black foliage",Mid Summer,3–4 ft
+Shrubs,Chokeberry,Autumn Magic,3–5 ft,2–4 ft,"White flowers, dark purple berries & red fall color",Spring,3–4 ft
+Shrubs,Panicle hydrangea,Torch,3–5 ft,3–4 ft,Early blooming white to deep pink panicles,Late Summer,3–4 ft
+Shrubs,Fothergilla,Mount Airy,3–5 ft,3–4 ft,"Honey-scented white brush flowers, brilliant yellow-orange fall color",Spring,3–4 ft
+Shrubs,Virginia sweetspire,Henry's Garnet,3–5 ft,4–6 ft,"Fragrant white bottle-brush flowers, garnet fall color",Early Summer,4–5 ft
+Shrubs,Fothergilla,Legend of the Fall,4–5 ft,4–5 ft,"White bottle-brush flowers, vibrant multi-colored fall foliage",Spring,4–5 ft
+Shrubs,Fothergilla,Blue Shadow,4–5 ft,4–5 ft,"White flowers, powdery blue summer foliage & fiery fall color",Spring,4–5 ft
+Shrubs,Ninebark,Autumn Jubilee,5–6 ft,4–5 ft,"White flowers, golden-orange/purple fall foliage",Spring,4–5 ft
+Shrubs,Ninebark,Summer Wine,5–6 ft,5–6 ft,"Pinkish-white flowers, dark purple foliage",Spring,5–6 ft
+Shrubs,Chokeberry,Brilliantissima,6–8 ft,6–8 ft,"White flowers, red berries & fiery red fall foliage",Spring,6–8 ft
+Shrubs,Panicle hydrangea,Limelight,6–8 ft,6–8 ft,Lime green fading to white & pink blooms,Late Summer,6–8 ft
+Shrubs,Panicle hydrangea,Quick Fire,6–8 ft,6–8 ft,White flowers aging quickly to deep rose-pink,Late Summer,6–8 ft
+Shrubs,American hazelnut,Corylus americana (straight species),8–12 ft,8–10 ft,"Yellow catkins, edible hazelnuts, orange/purple fall color",Spring,8–10 ft
+Trees,Mugo Pine,Jakobsen,1–2 ft,2–3 ft,"Dark green needles, bonsai-like habit",,2–3 ft
+Trees,Juniper,Wichita Blue,10–15 ft,4–6 ft,"Bright sky-blue foliage, upright pyramidal",,5–6 ft
+Trees,Korean Fir,Silberlocke,10–15 ft,6–8 ft,Curled green needles showing silver undersides,,6–8 ft
+Trees,Juniper,Gin Fizz,10–18 ft,7–10 ft,"Blue-green foliage, heavy blue berries",,6–8 ft
+Trees,Serviceberry,Standing Ovation,12–15 ft,3–4 ft,"White flowers, red/dark berries",Spring,4–6 ft
+Trees,Bosnian Pine,Emerald Arrow,12–15 ft,4–6 ft,"Deep emerald green needles, columnar",,5–6 ft
+Trees,Juniper,Torulosa,12–15 ft,6–8 ft,"Rich green twisted foliage, sculptural habit",,6–8 ft
+Trees,Eastern redbud,Black Pearl,15–20 ft,15–20 ft,"Lavender-pink, dark purple/black foliage",Spring,15–20 ft
+Trees,Serviceberry,Rainbow Pillar,15–20 ft,8–10 ft,"White flowers, dark purple berries",Spring,8–10 ft
+Trees,Eastern redbud,Appalachian Red,15–25 ft,15–25 ft,Fuchsia/bright pink-red flowers,Spring,15–20 ft
+Trees,Mugo Pine,Blue Shag,2–4 ft,2–4 ft,"Soft blue-green needles, mounding",,3–4 ft
+Trees,Serviceberry,Autumn Brilliance,20–25 ft,15–20 ft,"White flowers, orange-red fall foliage",Spring,15–20 ft
+Trees,Japanese tree lilac,Ivory Silk,20–25 ft,15–20 ft,Creamy white fragrant flowers,Early Summer,15–20 ft
+Trees,Eastern white pine,Golden Candles,20–30 ft,10–15 ft,"Golden yellow needle tips, evergreen",,12–15 ft
+Trees,Mugo Pine,Green Candle,3–5 ft,3–4 ft,Rich green needles with showy white candles,,3–4 ft
+Trees,Juniper,Mint Julep,3–5 ft,4–6 ft,"Mint-green foliage, arching branches",,4–5 ft
+Trees,Eastern red cedar,Straight species,30–40 ft,8–15 ft,"Dark green/bronze evergreen, blue cones",,10–15 ft
+Trees,Eastern white pine,Mini Twists,4–6 ft,3–4 ft,Twisted blue-green needles,,4–5 ft
+Trees,Red maple,Redpointe,40–45 ft,25–30 ft,"Red flowers, bright red fall color",Fall,20–25 ft
+Trees,Red maple,October Glory,40–50 ft,30–40 ft,"Red flowers, deep crimson fall foliage",Fall,25–30 ft
+Trees,River birch,Heritage,40–50 ft,30–40 ft,Exfoliating creamy salmon bark,,25–30 ft
+Trees,Red maple,Red Sunset,45–50 ft,35–40 ft,"Red flowers, brilliant red fall foliage",Fall,25–30 ft
+Trees,White oak,Straight species,50–80 ft,50–80 ft,"Inconspicuous blooms, red/wine fall color",Fall,30–40 ft
+Trees,Red oak,Straight species,60–75 ft,45–50 ft,"Inconspicuous blooms, bright red fall foliage",Fall,30–40 ft
+Trees,Tulip tree,Liriodendron tulipifera,70–90 ft,35–50 ft,Tulip-shaped yellow-green & orange flowers,Spring,35–40 ft
+Trees,Eastern white pine,Stowe's Pillar,8–10 ft,2–3 ft,"Blue-green needles, columnar foliage",,3–4 ft
+Trees,Spruce,Serbian spruce 'Nana',8–10 ft,8–10 ft,"Blue-green and silver needles, dwarf cone",,8–10 ft
+Trees,Juniper,Green Columnar,15 ft,5 ft,,,5 ft
+Trees,Juniper,Hollywood,15 ft,10 ft,,,
+Trees,Juniper,pfitzeriana 'Aurea Improved',3 ft,4 ft,,,
+Trees,Juniper,Bluepoint,12 ft,8 ft,,,
+Trees,Juniper,Skyrocket,15-20 ft,2-3 ft,,,
+Trees,Juniper,Moonglow,20 ft,8 ft,,,
+Vines,Clematis,Virginiana,12–20 ft,1 ft,"Fragrant white starry flower clusters, feathery seed heads",Late Summer,4–6 ft
+Vines,Grapes,Somerset Seedless,15–20 ft,1 ft,"Inconspicuous blooms, sweet strawberry-flavored red grapes",,8–10 ft
+Vines,Grapes,Candice,15–20 ft,1 ft,"Inconspicuous blooms, sweet red seedless grapes",,8–10 ft

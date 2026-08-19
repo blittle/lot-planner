@@ -64,6 +64,130 @@ body {
 .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn-primary:hover { background: #345a34; }
 
+.notice-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #fbf0d9;
+  color: #6b4f1d;
+  border-bottom: 1px solid #e6cf9c;
+  font-size: 12.5px;
+}
+
+.notice-banner-dismiss {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.filterbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.filter-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.filter-field > span {
+  white-space: nowrap;
+}
+
+.filter-field-slider {
+  flex: 1;
+  min-width: 220px;
+  max-width: 420px;
+}
+
+.height-slider {
+  position: relative;
+  flex: 1;
+  height: 20px;
+}
+
+.height-slider-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.height-slider-range {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.height-slider-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.height-slider-input::-webkit-slider-thumb {
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #fff;
+  box-shadow: 0 0 2px rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+
+.height-slider-input::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #fff;
+  box-shadow: 0 0 2px rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+
+.height-slider-input::-webkit-slider-runnable-track {
+  background: transparent;
+}
+.height-slider-input::-moz-range-track {
+  background: transparent;
+}
+
+.marker.filtered-out,
+.shape.filtered-out {
+  opacity: 0.12 !important;
+}
+
 .layout {
   flex: 1;
   display: flex;

@@ -12,9 +12,38 @@
     <h1>Lot Planner</h1>
     <div class="topbar-actions">
       <span id="stats" class="stats"></span>
+      <button id="exportBtn" class="btn" title="Save all placements, shapes and settings to a file">Export</button>
+      <button id="importBtn" class="btn" title="Load placements, shapes and settings from a file">Import</button>
+      <input type="file" id="importFileInput" accept="application/json" style="display:none">
       <button id="clearAllBtn" class="btn btn-danger" title="Remove all placed plants">Clear placed</button>
     </div>
   </header>
+
+  <div class="filterbar">
+    <label class="filter-field">
+      <span>Bloom season</span>
+      <select id="seasonFilter" class="shape-select">
+        <option value="all">All seasons</option>
+        <option value="Spring">Spring</option>
+        <option value="Early Summer">Early Summer</option>
+        <option value="Mid Summer">Mid Summer</option>
+        <option value="Late Summer">Late Summer</option>
+        <option value="Fall">Fall</option>
+      </select>
+    </label>
+
+    <div class="filter-field filter-field-slider">
+      <span>Height <span id="heightRangeLabel"></span></span>
+      <div class="height-slider" id="heightSlider">
+        <div class="height-slider-track"></div>
+        <div class="height-slider-range" id="heightSliderRange"></div>
+        <input type="range" id="heightMinInput" class="height-slider-input">
+        <input type="range" id="heightMaxInput" class="height-slider-input">
+      </div>
+    </div>
+
+    <button id="resetFiltersBtn" class="btn zoom-btn-wide" title="Reset season and height filters">Reset filters</button>
+  </div>
 
   <main class="layout">
     <section class="stage-wrap">
