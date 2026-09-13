@@ -11,25 +11,6 @@ const LOT_DATA = {
   ],
   "plants": [
     {
-      "id": "grasses-little-bluestem-the-blues",
-      "category": "Grasses",
-      "genus": "Little bluestem",
-      "cultivar": "The Blues",
-      "displayName": "Little bluestem 'The Blues'",
-      "height": "2\u20133 ft",
-      "width": "1.5\u20132 ft",
-      "heightFt": 2.5,
-      "heightMinFt": 2.0,
-      "heightMaxFt": 3.0,
-      "widthFt": 1.75,
-      "color": "Blue-stemmed grass with bronze-red fall color",
-      "bloomTime": "Late Summer",
-      "seasons": [
-        "Late Summer"
-      ],
-      "spacing": "1.5\u20132 ft"
-    },
-    {
       "id": "grasses-prairie-dropseed-straight-species",
       "category": "Grasses",
       "genus": "Prairie dropseed",
@@ -49,25 +30,6 @@ const LOT_DATA = {
       "spacing": "2\u20132.5 ft"
     },
     {
-      "id": "grasses-little-bluestem-straight-species",
-      "category": "Grasses",
-      "genus": "Little bluestem",
-      "cultivar": "Straight species",
-      "displayName": "Little bluestem",
-      "height": "2\u20134 ft",
-      "width": "1.5\u20132 ft",
-      "heightFt": 3.0,
-      "heightMinFt": 2.0,
-      "heightMaxFt": 4.0,
-      "widthFt": 1.75,
-      "color": "Blue-green summer foliage, copper fall color",
-      "bloomTime": "Late Summer",
-      "seasons": [
-        "Late Summer"
-      ],
-      "spacing": "1.5\u20132 ft"
-    },
-    {
       "id": "grasses-switchgrass-shenandoah",
       "category": "Grasses",
       "genus": "Switchgrass",
@@ -80,25 +42,6 @@ const LOT_DATA = {
       "heightMaxFt": 4.0,
       "widthFt": 2.25,
       "color": "Green blades with fiery red/burgundy tips",
-      "bloomTime": "Late Summer",
-      "seasons": [
-        "Late Summer"
-      ],
-      "spacing": "2 ft"
-    },
-    {
-      "id": "grasses-big-bluestem-blackhawks",
-      "category": "Grasses",
-      "genus": "Big bluestem",
-      "cultivar": "Blackhawks",
-      "displayName": "Big bluestem 'Blackhawks'",
-      "height": "4\u20135 ft",
-      "width": "2\u20132.5 ft",
-      "heightFt": 4.5,
-      "heightMinFt": 4.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 2.25,
-      "color": "Dark green turning deep purple to near-black",
       "bloomTime": "Late Summer",
       "seasons": [
         "Late Summer"
@@ -125,25 +68,6 @@ const LOT_DATA = {
       "spacing": "2\u20132.5 ft"
     },
     {
-      "id": "low-filler-plants-creeping-thyme-elfin",
-      "category": "Low/filler plants",
-      "genus": "Creeping thyme",
-      "cultivar": "Elfin",
-      "displayName": "Creeping thyme 'Elfin'",
-      "height": "1\u20132 in",
-      "width": "8\u201312 in",
-      "heightFt": 0.12,
-      "heightMinFt": 0.08,
-      "heightMaxFt": 0.17,
-      "widthFt": 0.83,
-      "color": "Pale pink/lavender tiny blooms, aromatic mat",
-      "bloomTime": "Early Summer",
-      "seasons": [
-        "Early Summer"
-      ],
-      "spacing": "6\u20138 in"
-    },
-    {
       "id": "low-filler-plants-hardy-geranium-rozanne",
       "category": "Low/filler plants",
       "genus": "Hardy geranium",
@@ -164,25 +88,6 @@ const LOT_DATA = {
         "Fall"
       ],
       "spacing": "18\u201324 in"
-    },
-    {
-      "id": "low-filler-plants-creeping-thyme-purple-carpet",
-      "category": "Low/filler plants",
-      "genus": "Creeping thyme",
-      "cultivar": "Purple Carpet",
-      "displayName": "Creeping thyme 'Purple Carpet'",
-      "height": "2\u20134 in",
-      "width": "12\u201318 in",
-      "heightFt": 0.25,
-      "heightMinFt": 0.17,
-      "heightMaxFt": 0.33,
-      "widthFt": 1.25,
-      "color": "Vibrant purple-magenta floral carpet",
-      "bloomTime": "Early Summer",
-      "seasons": [
-        "Early Summer"
-      ],
-      "spacing": "10\u201312 in"
     },
     {
       "id": "low-filler-plants-low-sedums-voodoo",
@@ -216,25 +121,6 @@ const LOT_DATA = {
       "heightMaxFt": 0.5,
       "widthFt": 1.25,
       "color": "Golden yellow needle foliage, amber in winter",
-      "bloomTime": "Mid Summer",
-      "seasons": [
-        "Mid Summer"
-      ],
-      "spacing": "10\u201312 in"
-    },
-    {
-      "id": "low-filler-plants-low-sedums-blue-spruce",
-      "category": "Low/filler plants",
-      "genus": "Low sedums",
-      "cultivar": "Blue Spruce",
-      "displayName": "Low sedums 'Blue Spruce'",
-      "height": "4\u20136 in",
-      "width": "12\u201318 in",
-      "heightFt": 0.42,
-      "heightMinFt": 0.33,
-      "heightMaxFt": 0.5,
-      "widthFt": 1.25,
-      "color": "Blue-green spruce-like foliage, yellow flowers",
       "bloomTime": "Mid Summer",
       "seasons": [
         "Mid Summer"
@@ -280,23 +166,63 @@ const LOT_DATA = {
       "spacing": "10\u201312 in"
     },
     {
-      "id": "low-filler-plants-lamb-s-ear-silver-carpet",
+      "id": "low-filler-plants-hardy-geranium-vision-pink",
       "category": "Low/filler plants",
-      "genus": "Lamb's ear",
-      "cultivar": "Silver carpet",
-      "displayName": "Lamb's ear 'Silver carpet'",
-      "height": "6\u20138 in",
-      "width": "18\u201324 in",
-      "heightFt": 0.58,
-      "heightMinFt": 0.5,
-      "heightMaxFt": 0.67,
-      "widthFt": 1.75,
-      "color": "Soft velvety silver foliage (non-blooming mat)",
-      "bloomTime": "Mid Summer",
+      "genus": "Hardy geranium",
+      "cultivar": "Vision Pink",
+      "displayName": "Hardy geranium 'Vision Pink'",
+      "height": "1 ft",
+      "width": "1 ft",
+      "heightFt": 1.0,
+      "heightMinFt": 1.0,
+      "heightMaxFt": 1.0,
+      "widthFt": 1.0,
+      "color": "Pink",
+      "bloomTime": "Spring, Mid Summer",
       "seasons": [
+        "Spring",
         "Mid Summer"
       ],
-      "spacing": "12\u201315 in"
+      "spacing": ""
+    },
+    {
+      "id": "low-filler-plants-ajuga-chocolate-chip",
+      "category": "Low/filler plants",
+      "genus": "Ajuga",
+      "cultivar": "Chocolate Chip",
+      "displayName": "Ajuga 'Chocolate Chip'",
+      "height": "2-3 in",
+      "width": "6-9 in",
+      "heightFt": 0.21,
+      "heightMinFt": 0.17,
+      "heightMaxFt": 0.25,
+      "widthFt": 0.62,
+      "color": "",
+      "bloomTime": "Spring, Early Summer",
+      "seasons": [
+        "Spring",
+        "Early Summer"
+      ],
+      "spacing": ""
+    },
+    {
+      "id": "low-filler-plants-creeping-thyme-woolly",
+      "category": "Low/filler plants",
+      "genus": "Creeping thyme",
+      "cultivar": "Woolly",
+      "displayName": "Creeping thyme 'Woolly'",
+      "height": "3 in",
+      "width": "12 in",
+      "heightFt": 0.25,
+      "heightMinFt": 0.25,
+      "heightMaxFt": 0.25,
+      "widthFt": 1.0,
+      "color": "",
+      "bloomTime": "Early Summer",
+      "seasons": [
+        "Early Summer"
+      ],
+      "spacing": ""
     },
     {
       "id": "perennials-daffodils-thalia",
@@ -335,25 +261,6 @@ const LOT_DATA = {
         "Fall"
       ],
       "spacing": "12\u201315 in"
-    },
-    {
-      "id": "perennials-heliopsis-sunstruck",
-      "category": "Perennials",
-      "genus": "Heliopsis",
-      "cultivar": "Sunstruck",
-      "displayName": "Heliopsis 'Sunstruck'",
-      "height": "14\u201316 in",
-      "width": "12\u201314 in",
-      "heightFt": 1.25,
-      "heightMinFt": 1.17,
-      "heightMaxFt": 1.33,
-      "widthFt": 1.08,
-      "color": "Golden yellow blooms with variegated white/green foliage",
-      "bloomTime": "Mid Summer",
-      "seasons": [
-        "Mid Summer"
-      ],
-      "spacing": "12\u201314 in"
     },
     {
       "id": "perennials-daffodils-poeticus-recurvus",
@@ -527,44 +434,6 @@ const LOT_DATA = {
       "spacing": "18\u201324 in"
     },
     {
-      "id": "perennials-joe-pye-weed-baby-joe",
-      "category": "Perennials",
-      "genus": "Joe Pye Weed",
-      "cultivar": "Baby Joe",
-      "displayName": "Joe Pye Weed 'Baby Joe'",
-      "height": "2\u20133 ft",
-      "width": "1.5\u20132 ft",
-      "heightFt": 2.5,
-      "heightMinFt": 2.0,
-      "heightMaxFt": 3.0,
-      "widthFt": 1.75,
-      "color": "Dwarf dusty pink/mauve flower heads",
-      "bloomTime": "Late Summer",
-      "seasons": [
-        "Late Summer"
-      ],
-      "spacing": "2 ft"
-    },
-    {
-      "id": "perennials-asters-raydon-s-favorite",
-      "category": "Perennials",
-      "genus": "Asters",
-      "cultivar": "Raydon's Favorite",
-      "displayName": "Asters 'Raydon's Favorite'",
-      "height": "2\u20133 ft",
-      "width": "2\u20133 ft",
-      "heightFt": 2.5,
-      "heightMinFt": 2.0,
-      "heightMaxFt": 3.0,
-      "widthFt": 2.5,
-      "color": "Aromatic lavender-blue starry blooms",
-      "bloomTime": "Fall",
-      "seasons": [
-        "Fall"
-      ],
-      "spacing": "2\u20132.5 ft"
-    },
-    {
       "id": "perennials-liatris-spicata",
       "category": "Perennials",
       "genus": "Liatris",
@@ -662,25 +531,6 @@ const LOT_DATA = {
       "spacing": "3 ft"
     },
     {
-      "id": "perennials-baptisia-american-goldfinch",
-      "category": "Perennials",
-      "genus": "Baptisia",
-      "cultivar": "American Goldfinch",
-      "displayName": "Baptisia 'American Goldfinch'",
-      "height": "3\u20133.5 ft",
-      "width": "3.5\u20134 ft",
-      "heightFt": 3.25,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 3.5,
-      "widthFt": 3.75,
-      "color": "Bright golden yellow flower spikes",
-      "bloomTime": "Early Summer",
-      "seasons": [
-        "Early Summer"
-      ],
-      "spacing": "3.5\u20134 ft"
-    },
-    {
       "id": "perennials-penstemon-digitalis",
       "category": "Perennials",
       "genus": "Penstemon",
@@ -736,25 +586,6 @@ const LOT_DATA = {
       "seasons": [
         "Mid Summer",
         "Late Summer"
-      ],
-      "spacing": "2\u20132.5 ft"
-    },
-    {
-      "id": "perennials-monarda-jacob-cline",
-      "category": "Perennials",
-      "genus": "Monarda",
-      "cultivar": "Jacob Cline",
-      "displayName": "Monarda 'Jacob Cline'",
-      "height": "3\u20134 ft",
-      "width": "2\u20133 ft",
-      "heightFt": 3.5,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 4.0,
-      "widthFt": 2.5,
-      "color": "Scarlet red whorled tubular flowers",
-      "bloomTime": "Early Summer",
-      "seasons": [
-        "Early Summer"
       ],
       "spacing": "2\u20132.5 ft"
     },
@@ -1008,270 +839,64 @@ const LOT_DATA = {
       "spacing": "3\u20134 ft"
     },
     {
-      "id": "shrubs-chokeberry-low-scape-mound",
-      "category": "Shrubs",
-      "genus": "Chokeberry",
-      "cultivar": "Low Scape Mound",
-      "displayName": "Chokeberry 'Low Scape Mound'",
-      "height": "1\u20132 ft",
+      "id": "perennials-garden-phlox-david-s-lavender",
+      "category": "Perennials",
+      "genus": "Garden phlox",
+      "cultivar": "David's Lavender",
+      "displayName": "Garden phlox 'David's Lavender'",
+      "height": "3 ft",
       "width": "2 ft",
-      "heightFt": 1.5,
-      "heightMinFt": 1.0,
-      "heightMaxFt": 2.0,
+      "heightFt": 3.0,
+      "heightMinFt": 3.0,
+      "heightMaxFt": 3.0,
       "widthFt": 2.0,
-      "color": "White flowers, black berries, brilliant red fall foliage",
-      "bloomTime": "Spring",
+      "color": "Lavender",
+      "bloomTime": "Mid Summer, Late Summer",
       "seasons": [
-        "Spring"
-      ],
-      "spacing": "1.5\u20132 ft"
-    },
-    {
-      "id": "shrubs-virginia-sweetspire-scentlandia",
-      "category": "Shrubs",
-      "genus": "Virginia sweetspire",
-      "cultivar": "Scentlandia",
-      "displayName": "Virginia sweetspire 'Scentlandia'",
-      "height": "2\u20133 ft",
-      "width": "2\u20133 ft",
-      "heightFt": 2.5,
-      "heightMinFt": 2.0,
-      "heightMaxFt": 3.0,
-      "widthFt": 2.5,
-      "color": "Highly fragrant white flowers, intense red-purple fall color",
-      "bloomTime": "Early Summer",
-      "seasons": [
-        "Early Summer"
-      ],
-      "spacing": "2\u20133 ft"
-    },
-    {
-      "id": "shrubs-diervilla-diervilla-lonicera-straight-species",
-      "category": "Shrubs",
-      "genus": "Diervilla",
-      "cultivar": "Diervilla lonicera (straight species)",
-      "displayName": "Diervilla 'Diervilla lonicera (straight species)'",
-      "height": "2\u20133 ft",
-      "width": "3\u20134 ft",
-      "heightFt": 2.5,
-      "heightMinFt": 2.0,
-      "heightMaxFt": 3.0,
-      "widthFt": 3.5,
-      "color": "Yellow trumpet flowers, red fall foliage",
-      "bloomTime": "Early Summer",
-      "seasons": [
-        "Early Summer"
-      ],
-      "spacing": "3\u20134 ft"
-    },
-    {
-      "id": "shrubs-ninebark-little-devil",
-      "category": "Shrubs",
-      "genus": "Ninebark",
-      "cultivar": "Little Devil",
-      "displayName": "Ninebark 'Little Devil'",
-      "height": "3\u20134 ft",
-      "width": "3\u20134 ft",
-      "heightFt": 3.5,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 4.0,
-      "widthFt": 3.5,
-      "color": "Pinkish-white button flowers, dark burgundy foliage",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "3\u20134 ft"
-    },
-    {
-      "id": "shrubs-diervilla-kodiak-black",
-      "category": "Shrubs",
-      "genus": "Diervilla",
-      "cultivar": "Kodiak Black",
-      "displayName": "Diervilla 'Kodiak Black'",
-      "height": "3\u20134 ft",
-      "width": "3\u20134 ft",
-      "heightFt": 3.5,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 4.0,
-      "widthFt": 3.5,
-      "color": "Bright yellow flowers, dark purple/black foliage",
-      "bloomTime": "Mid Summer",
-      "seasons": [
-        "Mid Summer"
-      ],
-      "spacing": "3\u20134 ft"
-    },
-    {
-      "id": "shrubs-chokeberry-autumn-magic",
-      "category": "Shrubs",
-      "genus": "Chokeberry",
-      "cultivar": "Autumn Magic",
-      "displayName": "Chokeberry 'Autumn Magic'",
-      "height": "3\u20135 ft",
-      "width": "2\u20134 ft",
-      "heightFt": 4.0,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 3.0,
-      "color": "White flowers, dark purple berries & red fall color",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "3\u20134 ft"
-    },
-    {
-      "id": "shrubs-panicle-hydrangea-torch",
-      "category": "Shrubs",
-      "genus": "Panicle hydrangea",
-      "cultivar": "Torch",
-      "displayName": "Panicle hydrangea 'Torch'",
-      "height": "3\u20135 ft",
-      "width": "3\u20134 ft",
-      "heightFt": 4.0,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 3.5,
-      "color": "Early blooming white to deep pink panicles",
-      "bloomTime": "Late Summer",
-      "seasons": [
+        "Mid Summer",
         "Late Summer"
       ],
-      "spacing": "3\u20134 ft"
+      "spacing": ""
     },
     {
-      "id": "shrubs-fothergilla-mount-airy",
-      "category": "Shrubs",
-      "genus": "Fothergilla",
-      "cultivar": "Mount Airy",
-      "displayName": "Fothergilla 'Mount Airy'",
-      "height": "3\u20135 ft",
-      "width": "3\u20134 ft",
-      "heightFt": 4.0,
+      "id": "perennials-garden-phlox-nicky",
+      "category": "Perennials",
+      "genus": "Garden phlox",
+      "cultivar": "Nicky",
+      "displayName": "Garden phlox 'Nicky'",
+      "height": "3 ft",
+      "width": "2 ft",
+      "heightFt": 3.0,
       "heightMinFt": 3.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 3.5,
-      "color": "Honey-scented white brush flowers, brilliant yellow-orange fall color",
-      "bloomTime": "Spring",
+      "heightMaxFt": 3.0,
+      "widthFt": 2.0,
+      "color": "Fuscia",
+      "bloomTime": "Mid Summer, Late Summer",
       "seasons": [
-        "Spring"
+        "Mid Summer",
+        "Late Summer"
       ],
-      "spacing": "3\u20134 ft"
+      "spacing": ""
     },
     {
-      "id": "shrubs-virginia-sweetspire-henry-s-garnet",
-      "category": "Shrubs",
-      "genus": "Virginia sweetspire",
-      "cultivar": "Henry's Garnet",
-      "displayName": "Virginia sweetspire 'Henry's Garnet'",
-      "height": "3\u20135 ft",
-      "width": "4\u20136 ft",
-      "heightFt": 4.0,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 5.0,
-      "color": "Fragrant white bottle-brush flowers, garnet fall color",
-      "bloomTime": "Early Summer",
+      "id": "perennials-catmint-kit-kat",
+      "category": "Perennials",
+      "genus": "Catmint",
+      "cultivar": "Kit Kat",
+      "displayName": "Catmint 'Kit Kat'",
+      "height": "1ft",
+      "width": "1 ft",
+      "heightFt": 1.0,
+      "heightMinFt": 1.0,
+      "heightMaxFt": 1.0,
+      "widthFt": 1.0,
+      "color": "Purple",
+      "bloomTime": "Early Summer, Late Summer",
       "seasons": [
-        "Early Summer"
+        "Early Summer",
+        "Late Summer"
       ],
-      "spacing": "4\u20135 ft"
-    },
-    {
-      "id": "shrubs-fothergilla-legend-of-the-fall",
-      "category": "Shrubs",
-      "genus": "Fothergilla",
-      "cultivar": "Legend of the Fall",
-      "displayName": "Fothergilla 'Legend of the Fall'",
-      "height": "4\u20135 ft",
-      "width": "4\u20135 ft",
-      "heightFt": 4.5,
-      "heightMinFt": 4.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 4.5,
-      "color": "White bottle-brush flowers, vibrant multi-colored fall foliage",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "4\u20135 ft"
-    },
-    {
-      "id": "shrubs-fothergilla-blue-shadow",
-      "category": "Shrubs",
-      "genus": "Fothergilla",
-      "cultivar": "Blue Shadow",
-      "displayName": "Fothergilla 'Blue Shadow'",
-      "height": "4\u20135 ft",
-      "width": "4\u20135 ft",
-      "heightFt": 4.5,
-      "heightMinFt": 4.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 4.5,
-      "color": "White flowers, powdery blue summer foliage & fiery fall color",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "4\u20135 ft"
-    },
-    {
-      "id": "shrubs-ninebark-autumn-jubilee",
-      "category": "Shrubs",
-      "genus": "Ninebark",
-      "cultivar": "Autumn Jubilee",
-      "displayName": "Ninebark 'Autumn Jubilee'",
-      "height": "5\u20136 ft",
-      "width": "4\u20135 ft",
-      "heightFt": 5.5,
-      "heightMinFt": 5.0,
-      "heightMaxFt": 6.0,
-      "widthFt": 4.5,
-      "color": "White flowers, golden-orange/purple fall foliage",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "4\u20135 ft"
-    },
-    {
-      "id": "shrubs-ninebark-summer-wine",
-      "category": "Shrubs",
-      "genus": "Ninebark",
-      "cultivar": "Summer Wine",
-      "displayName": "Ninebark 'Summer Wine'",
-      "height": "5\u20136 ft",
-      "width": "5\u20136 ft",
-      "heightFt": 5.5,
-      "heightMinFt": 5.0,
-      "heightMaxFt": 6.0,
-      "widthFt": 5.5,
-      "color": "Pinkish-white flowers, dark purple foliage",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "5\u20136 ft"
-    },
-    {
-      "id": "shrubs-chokeberry-brilliantissima",
-      "category": "Shrubs",
-      "genus": "Chokeberry",
-      "cultivar": "Brilliantissima",
-      "displayName": "Chokeberry 'Brilliantissima'",
-      "height": "6\u20138 ft",
-      "width": "6\u20138 ft",
-      "heightFt": 7.0,
-      "heightMinFt": 6.0,
-      "heightMaxFt": 8.0,
-      "widthFt": 7.0,
-      "color": "White flowers, red berries & fiery red fall foliage",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "6\u20138 ft"
+      "spacing": ""
     },
     {
       "id": "shrubs-panicle-hydrangea-limelight",
@@ -1293,360 +918,156 @@ const LOT_DATA = {
       "spacing": "6\u20138 ft"
     },
     {
-      "id": "shrubs-panicle-hydrangea-quick-fire",
+      "id": "shrubs-diervilla-kodiak-red",
       "category": "Shrubs",
-      "genus": "Panicle hydrangea",
-      "cultivar": "Quick Fire",
-      "displayName": "Panicle hydrangea 'Quick Fire'",
-      "height": "6\u20138 ft",
-      "width": "6\u20138 ft",
+      "genus": "Diervilla",
+      "cultivar": "Kodiak Red",
+      "displayName": "Diervilla 'Kodiak Red'",
+      "height": "3\u20134 ft",
+      "width": "3\u20134 ft",
+      "heightFt": 3.5,
+      "heightMinFt": 3.0,
+      "heightMaxFt": 4.0,
+      "widthFt": 3.5,
+      "color": "Bright yellow flowers, dark purple/black foliage",
+      "bloomTime": "Mid Summer",
+      "seasons": [
+        "Mid Summer"
+      ],
+      "spacing": "3\u20134 ft"
+    },
+    {
+      "id": "shrubs-ninebark-amber-jubilee",
+      "category": "Shrubs",
+      "genus": "Ninebark",
+      "cultivar": "Amber Jubilee",
+      "displayName": "Ninebark 'Amber Jubilee'",
+      "height": "5-7 ft",
+      "width": "4-6 ft",
+      "heightFt": 6.0,
+      "heightMinFt": 5.0,
+      "heightMaxFt": 7.0,
+      "widthFt": 5.0,
+      "color": "",
+      "bloomTime": "Spring",
+      "seasons": [
+        "Spring"
+      ],
+      "spacing": ""
+    },
+    {
+      "id": "shrubs-ninebark-coppertina",
+      "category": "Shrubs",
+      "genus": "Ninebark",
+      "cultivar": "Coppertina",
+      "displayName": "Ninebark 'Coppertina'",
+      "height": "6-8 ft",
+      "width": "6-8 ft",
       "heightFt": 7.0,
       "heightMinFt": 6.0,
       "heightMaxFt": 8.0,
       "widthFt": 7.0,
-      "color": "White flowers aging quickly to deep rose-pink",
-      "bloomTime": "Late Summer",
+      "color": "",
+      "bloomTime": "Spring",
       "seasons": [
-        "Late Summer"
+        "Spring"
       ],
-      "spacing": "6\u20138 ft"
+      "spacing": ""
     },
     {
-      "id": "shrubs-american-hazelnut-corylus-americana-straight-species",
+      "id": "shrubs-dogwood-cayenne",
       "category": "Shrubs",
-      "genus": "American hazelnut",
-      "cultivar": "Corylus americana (straight species)",
-      "displayName": "American hazelnut 'Corylus americana (straight species)'",
-      "height": "8\u201312 ft",
-      "width": "8\u201310 ft",
-      "heightFt": 10.0,
-      "heightMinFt": 8.0,
-      "heightMaxFt": 12.0,
+      "genus": "Dogwood",
+      "cultivar": "Cayenne",
+      "displayName": "Dogwood 'Cayenne'",
+      "height": "6-8 ft",
+      "width": "8-10 ft",
+      "heightFt": 7.0,
+      "heightMinFt": 6.0,
+      "heightMaxFt": 8.0,
       "widthFt": 9.0,
-      "color": "Yellow catkins, edible hazelnuts, orange/purple fall color",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "8\u201310 ft"
-    },
-    {
-      "id": "trees-mugo-pine-jakobsen",
-      "category": "Trees",
-      "genus": "Mugo Pine",
-      "cultivar": "Jakobsen",
-      "displayName": "Mugo Pine 'Jakobsen'",
-      "height": "1\u20132 ft",
-      "width": "2\u20133 ft",
-      "heightFt": 1.5,
-      "heightMinFt": 1.0,
-      "heightMaxFt": 2.0,
-      "widthFt": 2.5,
-      "color": "Dark green needles, bonsai-like habit",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "2\u20133 ft"
-    },
-    {
-      "id": "trees-juniper-wichita-blue",
-      "category": "Trees",
-      "genus": "Juniper",
-      "cultivar": "Wichita Blue",
-      "displayName": "Juniper 'Wichita Blue'",
-      "height": "10\u201315 ft",
-      "width": "4\u20136 ft",
-      "heightFt": 12.5,
-      "heightMinFt": 10.0,
-      "heightMaxFt": 15.0,
-      "widthFt": 5.0,
-      "color": "Bright sky-blue foliage, upright pyramidal",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "5\u20136 ft"
-    },
-    {
-      "id": "trees-korean-fir-silberlocke",
-      "category": "Trees",
-      "genus": "Korean Fir",
-      "cultivar": "Silberlocke",
-      "displayName": "Korean Fir 'Silberlocke'",
-      "height": "10\u201315 ft",
-      "width": "6\u20138 ft",
-      "heightFt": 12.5,
-      "heightMinFt": 10.0,
-      "heightMaxFt": 15.0,
-      "widthFt": 7.0,
-      "color": "Curled green needles showing silver undersides",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "6\u20138 ft"
-    },
-    {
-      "id": "trees-juniper-gin-fizz",
-      "category": "Trees",
-      "genus": "Juniper",
-      "cultivar": "Gin Fizz",
-      "displayName": "Juniper 'Gin Fizz'",
-      "height": "10\u201318 ft",
-      "width": "7\u201310 ft",
-      "heightFt": 14.0,
-      "heightMinFt": 10.0,
-      "heightMaxFt": 18.0,
-      "widthFt": 8.5,
-      "color": "Blue-green foliage, heavy blue berries",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "6\u20138 ft"
-    },
-    {
-      "id": "trees-serviceberry-standing-ovation",
-      "category": "Trees",
-      "genus": "Serviceberry",
-      "cultivar": "Standing Ovation",
-      "displayName": "Serviceberry 'Standing Ovation'",
-      "height": "12\u201315 ft",
-      "width": "3\u20134 ft",
-      "heightFt": 13.5,
-      "heightMinFt": 12.0,
-      "heightMaxFt": 15.0,
-      "widthFt": 3.5,
-      "color": "White flowers, red/dark berries",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "4\u20136 ft"
-    },
-    {
-      "id": "trees-bosnian-pine-emerald-arrow",
-      "category": "Trees",
-      "genus": "Bosnian Pine",
-      "cultivar": "Emerald Arrow",
-      "displayName": "Bosnian Pine 'Emerald Arrow'",
-      "height": "12\u201315 ft",
-      "width": "4\u20136 ft",
-      "heightFt": 13.5,
-      "heightMinFt": 12.0,
-      "heightMaxFt": 15.0,
-      "widthFt": 5.0,
-      "color": "Deep emerald green needles, columnar",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "5\u20136 ft"
-    },
-    {
-      "id": "trees-juniper-torulosa",
-      "category": "Trees",
-      "genus": "Juniper",
-      "cultivar": "Torulosa",
-      "displayName": "Juniper 'Torulosa'",
-      "height": "12\u201315 ft",
-      "width": "6\u20138 ft",
-      "heightFt": 13.5,
-      "heightMinFt": 12.0,
-      "heightMaxFt": 15.0,
-      "widthFt": 7.0,
-      "color": "Rich green twisted foliage, sculptural habit",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "6\u20138 ft"
-    },
-    {
-      "id": "trees-eastern-redbud-black-pearl",
-      "category": "Trees",
-      "genus": "Eastern redbud",
-      "cultivar": "Black Pearl",
-      "displayName": "Eastern redbud 'Black Pearl'",
-      "height": "15\u201320 ft",
-      "width": "15\u201320 ft",
-      "heightFt": 17.5,
-      "heightMinFt": 15.0,
-      "heightMaxFt": 20.0,
-      "widthFt": 17.5,
-      "color": "Lavender-pink, dark purple/black foliage",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "15\u201320 ft"
-    },
-    {
-      "id": "trees-serviceberry-rainbow-pillar",
-      "category": "Trees",
-      "genus": "Serviceberry",
-      "cultivar": "Rainbow Pillar",
-      "displayName": "Serviceberry 'Rainbow Pillar'",
-      "height": "15\u201320 ft",
-      "width": "8\u201310 ft",
-      "heightFt": 17.5,
-      "heightMinFt": 15.0,
-      "heightMaxFt": 20.0,
-      "widthFt": 9.0,
-      "color": "White flowers, dark purple berries",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "8\u201310 ft"
-    },
-    {
-      "id": "trees-eastern-redbud-appalachian-red",
-      "category": "Trees",
-      "genus": "Eastern redbud",
-      "cultivar": "Appalachian Red",
-      "displayName": "Eastern redbud 'Appalachian Red'",
-      "height": "15\u201325 ft",
-      "width": "15\u201325 ft",
-      "heightFt": 20.0,
-      "heightMinFt": 15.0,
-      "heightMaxFt": 25.0,
-      "widthFt": 20.0,
-      "color": "Fuchsia/bright pink-red flowers",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "15\u201320 ft"
-    },
-    {
-      "id": "trees-mugo-pine-blue-shag",
-      "category": "Trees",
-      "genus": "Mugo Pine",
-      "cultivar": "Blue Shag",
-      "displayName": "Mugo Pine 'Blue Shag'",
-      "height": "2\u20134 ft",
-      "width": "2\u20134 ft",
-      "heightFt": 3.0,
-      "heightMinFt": 2.0,
-      "heightMaxFt": 4.0,
-      "widthFt": 3.0,
-      "color": "Soft blue-green needles, mounding",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "3\u20134 ft"
-    },
-    {
-      "id": "trees-serviceberry-autumn-brilliance",
-      "category": "Trees",
-      "genus": "Serviceberry",
-      "cultivar": "Autumn Brilliance",
-      "displayName": "Serviceberry 'Autumn Brilliance'",
-      "height": "20\u201325 ft",
-      "width": "15\u201320 ft",
-      "heightFt": 22.5,
-      "heightMinFt": 20.0,
-      "heightMaxFt": 25.0,
-      "widthFt": 17.5,
-      "color": "White flowers, orange-red fall foliage",
-      "bloomTime": "Spring",
-      "seasons": [
-        "Spring"
-      ],
-      "spacing": "15\u201320 ft"
-    },
-    {
-      "id": "trees-japanese-tree-lilac-ivory-silk",
-      "category": "Trees",
-      "genus": "Japanese tree lilac",
-      "cultivar": "Ivory Silk",
-      "displayName": "Japanese tree lilac 'Ivory Silk'",
-      "height": "20\u201325 ft",
-      "width": "15\u201320 ft",
-      "heightFt": 22.5,
-      "heightMinFt": 20.0,
-      "heightMaxFt": 25.0,
-      "widthFt": 17.5,
-      "color": "Creamy white fragrant flowers",
+      "color": "",
       "bloomTime": "Early Summer",
       "seasons": [
         "Early Summer"
       ],
-      "spacing": "15\u201320 ft"
+      "spacing": ""
     },
     {
-      "id": "trees-eastern-white-pine-golden-candles",
-      "category": "Trees",
-      "genus": "Eastern white pine",
-      "cultivar": "Golden Candles",
-      "displayName": "Eastern white pine 'Golden Candles'",
-      "height": "20\u201330 ft",
-      "width": "10\u201315 ft",
-      "heightFt": 25.0,
-      "heightMinFt": 20.0,
-      "heightMaxFt": 30.0,
-      "widthFt": 12.5,
-      "color": "Golden yellow needle tips, evergreen",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "12\u201315 ft"
-    },
-    {
-      "id": "trees-mugo-pine-green-candle",
-      "category": "Trees",
-      "genus": "Mugo Pine",
-      "cultivar": "Green Candle",
-      "displayName": "Mugo Pine 'Green Candle'",
-      "height": "3\u20135 ft",
-      "width": "3\u20134 ft",
-      "heightFt": 4.0,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 3.5,
-      "color": "Rich green needles with showy white candles",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "3\u20134 ft"
-    },
-    {
-      "id": "trees-juniper-mint-julep",
-      "category": "Trees",
-      "genus": "Juniper",
-      "cultivar": "Mint Julep",
-      "displayName": "Juniper 'Mint Julep'",
-      "height": "3\u20135 ft",
-      "width": "4\u20136 ft",
-      "heightFt": 4.0,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 5.0,
-      "widthFt": 5.0,
-      "color": "Mint-green foliage, arching branches",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "4\u20135 ft"
-    },
-    {
-      "id": "trees-eastern-red-cedar-straight-species",
-      "category": "Trees",
-      "genus": "Eastern red cedar",
-      "cultivar": "Straight species",
-      "displayName": "Eastern red cedar",
-      "height": "30\u201340 ft",
-      "width": "8\u201315 ft",
-      "heightFt": 35.0,
-      "heightMinFt": 30.0,
-      "heightMaxFt": 40.0,
-      "widthFt": 11.5,
-      "color": "Dark green/bronze evergreen, blue cones",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "10\u201315 ft"
-    },
-    {
-      "id": "trees-eastern-white-pine-mini-twists",
-      "category": "Trees",
-      "genus": "Eastern white pine",
-      "cultivar": "Mini Twists",
-      "displayName": "Eastern white pine 'Mini Twists'",
-      "height": "4\u20136 ft",
-      "width": "3\u20134 ft",
+      "id": "shrubs-spirea-firegold",
+      "category": "Shrubs",
+      "genus": "Spirea",
+      "cultivar": "Firegold",
+      "displayName": "Spirea 'Firegold'",
+      "height": "4-6 ft",
+      "width": "5-7 ft",
       "heightFt": 5.0,
       "heightMinFt": 4.0,
       "heightMaxFt": 6.0,
+      "widthFt": 6.0,
+      "color": "",
+      "bloomTime": "Spring",
+      "seasons": [
+        "Spring"
+      ],
+      "spacing": ""
+    },
+    {
+      "id": "shrubs-panicle-hydrangea-little-lime-punch",
+      "category": "Shrubs",
+      "genus": "Panicle hydrangea",
+      "cultivar": "Little Lime Punch",
+      "displayName": "Panicle hydrangea 'Little Lime Punch'",
+      "height": "3-5 ft",
+      "width": "3-5 ft",
+      "heightFt": 4.0,
+      "heightMinFt": 3.0,
+      "heightMaxFt": 5.0,
+      "widthFt": 4.0,
+      "color": "",
+      "bloomTime": "Late Summer",
+      "seasons": [
+        "Late Summer"
+      ],
+      "spacing": ""
+    },
+    {
+      "id": "shrubs-ninebark-tiny-wine",
+      "category": "Shrubs",
+      "genus": "Ninebark",
+      "cultivar": "Tiny Wine",
+      "displayName": "Ninebark 'Tiny Wine'",
+      "height": "3-5 ft",
+      "width": "3-4 ft",
+      "heightFt": 4.0,
+      "heightMinFt": 3.0,
+      "heightMaxFt": 5.0,
       "widthFt": 3.5,
-      "color": "Twisted blue-green needles",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "4\u20135 ft"
+      "color": "",
+      "bloomTime": "Spring",
+      "seasons": [
+        "Spring"
+      ],
+      "spacing": ""
+    },
+    {
+      "id": "shrubs-panicle-hydrangea-little-quick-fire",
+      "category": "Shrubs",
+      "genus": "Panicle hydrangea",
+      "cultivar": "Little Quick Fire",
+      "displayName": "Panicle hydrangea 'Little Quick Fire'",
+      "height": "3-5 ft",
+      "width": "3-5 ft",
+      "heightFt": 4.0,
+      "heightMinFt": 3.0,
+      "heightMaxFt": 5.0,
+      "widthFt": 4.0,
+      "color": "",
+      "bloomTime": "Late Summer",
+      "seasons": [
+        "Late Summer"
+      ],
+      "spacing": ""
     },
     {
       "id": "trees-red-maple-redpointe",
@@ -1687,23 +1108,6 @@ const LOT_DATA = {
       "spacing": "25\u201330 ft"
     },
     {
-      "id": "trees-river-birch-heritage",
-      "category": "Trees",
-      "genus": "River birch",
-      "cultivar": "Heritage",
-      "displayName": "River birch 'Heritage'",
-      "height": "40\u201350 ft",
-      "width": "30\u201340 ft",
-      "heightFt": 45.0,
-      "heightMinFt": 40.0,
-      "heightMaxFt": 50.0,
-      "widthFt": 35.0,
-      "color": "Exfoliating creamy salmon bark",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "25\u201330 ft"
-    },
-    {
       "id": "trees-red-maple-red-sunset",
       "category": "Trees",
       "genus": "Red maple",
@@ -1721,44 +1125,6 @@ const LOT_DATA = {
         "Fall"
       ],
       "spacing": "25\u201330 ft"
-    },
-    {
-      "id": "trees-white-oak-straight-species",
-      "category": "Trees",
-      "genus": "White oak",
-      "cultivar": "Straight species",
-      "displayName": "White oak",
-      "height": "50\u201380 ft",
-      "width": "50\u201380 ft",
-      "heightFt": 65.0,
-      "heightMinFt": 50.0,
-      "heightMaxFt": 80.0,
-      "widthFt": 65.0,
-      "color": "Inconspicuous blooms, red/wine fall color",
-      "bloomTime": "Fall",
-      "seasons": [
-        "Fall"
-      ],
-      "spacing": "30\u201340 ft"
-    },
-    {
-      "id": "trees-red-oak-straight-species",
-      "category": "Trees",
-      "genus": "Red oak",
-      "cultivar": "Straight species",
-      "displayName": "Red oak",
-      "height": "60\u201375 ft",
-      "width": "45\u201350 ft",
-      "heightFt": 67.5,
-      "heightMinFt": 60.0,
-      "heightMaxFt": 75.0,
-      "widthFt": 47.5,
-      "color": "Inconspicuous blooms, bright red fall foliage",
-      "bloomTime": "Fall",
-      "seasons": [
-        "Fall"
-      ],
-      "spacing": "30\u201340 ft"
     },
     {
       "id": "trees-tulip-tree-liriodendron-tulipifera",
@@ -1780,40 +1146,6 @@ const LOT_DATA = {
       "spacing": "35\u201340 ft"
     },
     {
-      "id": "trees-eastern-white-pine-stowe-s-pillar",
-      "category": "Trees",
-      "genus": "Eastern white pine",
-      "cultivar": "Stowe's Pillar",
-      "displayName": "Eastern white pine 'Stowe's Pillar'",
-      "height": "8\u201310 ft",
-      "width": "2\u20133 ft",
-      "heightFt": 9.0,
-      "heightMinFt": 8.0,
-      "heightMaxFt": 10.0,
-      "widthFt": 2.5,
-      "color": "Blue-green needles, columnar foliage",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "3\u20134 ft"
-    },
-    {
-      "id": "trees-spruce-serbian-spruce-nana",
-      "category": "Trees",
-      "genus": "Spruce",
-      "cultivar": "Serbian spruce 'Nana'",
-      "displayName": "Spruce 'Serbian spruce 'Nana''",
-      "height": "8\u201310 ft",
-      "width": "8\u201310 ft",
-      "heightFt": 9.0,
-      "heightMinFt": 8.0,
-      "heightMaxFt": 10.0,
-      "widthFt": 9.0,
-      "color": "Blue-green and silver needles, dwarf cone",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": "8\u201310 ft"
-    },
-    {
       "id": "trees-juniper-green-columnar",
       "category": "Trees",
       "genus": "Juniper",
@@ -1831,57 +1163,6 @@ const LOT_DATA = {
       "spacing": "5 ft"
     },
     {
-      "id": "trees-juniper-hollywood",
-      "category": "Trees",
-      "genus": "Juniper",
-      "cultivar": "Hollywood",
-      "displayName": "Juniper 'Hollywood'",
-      "height": "15 ft",
-      "width": "10 ft",
-      "heightFt": 15.0,
-      "heightMinFt": 15.0,
-      "heightMaxFt": 15.0,
-      "widthFt": 10.0,
-      "color": "",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": ""
-    },
-    {
-      "id": "trees-juniper-pfitzeriana-aurea-improved",
-      "category": "Trees",
-      "genus": "Juniper",
-      "cultivar": "pfitzeriana 'Aurea Improved'",
-      "displayName": "Juniper 'pfitzeriana 'Aurea Improved''",
-      "height": "3 ft",
-      "width": "4 ft",
-      "heightFt": 3.0,
-      "heightMinFt": 3.0,
-      "heightMaxFt": 3.0,
-      "widthFt": 4.0,
-      "color": "",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": ""
-    },
-    {
-      "id": "trees-juniper-bluepoint",
-      "category": "Trees",
-      "genus": "Juniper",
-      "cultivar": "Bluepoint",
-      "displayName": "Juniper 'Bluepoint'",
-      "height": "12 ft",
-      "width": "8 ft",
-      "heightFt": 12.0,
-      "heightMinFt": 12.0,
-      "heightMaxFt": 12.0,
-      "widthFt": 8.0,
-      "color": "",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": ""
-    },
-    {
       "id": "trees-juniper-skyrocket",
       "category": "Trees",
       "genus": "Juniper",
@@ -1893,23 +1174,6 @@ const LOT_DATA = {
       "heightMinFt": 15.0,
       "heightMaxFt": 20.0,
       "widthFt": 2.5,
-      "color": "",
-      "bloomTime": "",
-      "seasons": [],
-      "spacing": ""
-    },
-    {
-      "id": "trees-juniper-moonglow",
-      "category": "Trees",
-      "genus": "Juniper",
-      "cultivar": "Moonglow",
-      "displayName": "Juniper 'Moonglow'",
-      "height": "20 ft",
-      "width": "8 ft",
-      "heightFt": 20.0,
-      "heightMinFt": 20.0,
-      "heightMaxFt": 20.0,
-      "widthFt": 8.0,
       "color": "",
       "bloomTime": "",
       "seasons": [],
