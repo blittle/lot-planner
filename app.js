@@ -301,7 +301,9 @@
   let clearArmed = false;
   let clearArmTimer = null;
   clearAllBtn.addEventListener('click', () => {
-    if (placements.length === 0) return;
+    // Orphans are stored data too, so the button still has work to do even
+    // when nothing is currently drawn on the map.
+    if (placements.length === 0 && orphanedPlacements.length === 0) return;
     if (!clearArmed) {
       clearArmed = true;
       clearAllBtn.textContent = 'Click again to confirm';
@@ -1164,7 +1166,11 @@
         window.alert('That file does not look like a Lot Planner export.');
         return;
       }
-      if (placements.length === 0 && shapes.length === 0) {
+      // Orphans count as data to lose: they're placements the user either
+      // chose to keep or hasn't answered the prompt about yet, and an import
+      // replaces them. Without them in this check, a map holding nothing but
+      // orphans would be overwritten with no confirmation step at all.
+      if (placements.length === 0 && orphanedPlacements.length === 0 && shapes.length === 0) {
         applyImport(data);
         return;
       }
