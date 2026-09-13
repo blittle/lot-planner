@@ -63,46 +63,64 @@ def parse_seasons(bloom_time):
     return [s for s in SEASONS if s in seasons]
 
 
-def main():
+def display_name_for(genus, cultivar):
+    if cultivar and cultivar.lower() != "straight species":
+        return f"{genus} '{cultivar}'"
+    return genus
+
+
+def build_plant(category, genus, cultivar, height, width, color, bloom_time, spacing, fallback_index=0):
+    """Builds one plant record. Shared with sync_data.py so the two stay in step."""
+    height_min_ft, height_max_ft = parse_range_ft(height)
+    width_min_ft, width_max_ft = parse_range_ft(width)
+    height_ft = round((height_min_ft + height_max_ft) / 2, 2) if height_min_ft is not None else None
+    width_ft = round((width_min_ft + width_max_ft) / 2, 2) if width_min_ft is not None else None
+
+    return {
+        "id": slugify(category, genus, cultivar) or f"plant-{fallback_index}",
+        "category": category,
+        "genus": genus,
+        "cultivar": cultivar,
+        "displayName": display_name_for(genus, cultivar),
+        "height": height,
+        "width": width,
+        "heightFt": height_ft,
+        "heightMinFt": height_min_ft,
+        "heightMaxFt": height_max_ft,
+        "widthFt": width_ft,
+        "color": color,
+        "bloomTime": bloom_time,
+        "seasons": parse_seasons(bloom_time),
+        "spacing": spacing,
+    }
+
+
+def read_csv(csv_path=CSV_PATH):
+    """Reads the plant CSV into plant records. Blank category/genus cells
+    inherit from the row above, matching how the sheet is actually filled in."""
     plants = []
     category = genus = ""
-    with open(CSV_PATH, newline="", encoding="utf-8") as f:
+    with open(csv_path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for i, row in enumerate(reader, start=1):
             category = row["Main Category"].strip() or category
             genus = row["Plant Name / Genus"].strip() or genus
-            cultivar = row["Cultivar / Variety"].strip()
-            height = row["Height"].strip()
-            width = row["Width"].strip()
-            color = row["Color / Characteristics"].strip()
-            bloom_time = row["Bloom Time"].strip()
-            spacing = row["Plant Spacing"].strip()
+            plants.append(build_plant(
+                category=category,
+                genus=genus,
+                cultivar=row["Cultivar / Variety"].strip(),
+                height=row["Height"].strip(),
+                width=row["Width"].strip(),
+                color=row["Color / Characteristics"].strip(),
+                bloom_time=row["Bloom Time"].strip(),
+                spacing=row["Plant Spacing"].strip(),
+                fallback_index=i,
+            ))
+    return plants
 
-            height_min_ft, height_max_ft = parse_range_ft(height)
-            width_min_ft, width_max_ft = parse_range_ft(width)
-            height_ft = round((height_min_ft + height_max_ft) / 2, 2) if height_min_ft is not None else None
-            width_ft = round((width_min_ft + width_max_ft) / 2, 2) if width_min_ft is not None else None
 
-            display_name = f"{genus} '{cultivar}'" if cultivar and cultivar.lower() != "straight species" else genus
-            plant_id = slugify(category, genus, cultivar) or f"plant-{i}"
-
-            plants.append({
-                "id": plant_id,
-                "category": category,
-                "genus": genus,
-                "cultivar": cultivar,
-                "displayName": display_name,
-                "height": height,
-                "width": width,
-                "heightFt": height_ft,
-                "heightMinFt": height_min_ft,
-                "heightMaxFt": height_max_ft,
-                "widthFt": width_ft,
-                "color": color,
-                "bloomTime": bloom_time,
-                "seasons": parse_seasons(bloom_time),
-                "spacing": spacing,
-            })
+def main():
+    plants = read_csv()
 
     data = {
         "imageWidthFt": IMAGE_WIDTH_FT,
