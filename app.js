@@ -104,10 +104,23 @@
   const IMAGE_WIDTH_FT = LOT_DATA.imageWidthFt;
   const IMAGE_PX_WIDTH = LOT_DATA.imagePxWidth;
   const IMAGE_HEIGHT_FT = IMAGE_WIDTH_FT * (LOT_DATA.imagePxHeight / LOT_DATA.imagePxWidth);
-  const PLANTS = LOT_DATA.plants;
-  const PLANTS_BY_ID = Object.fromEntries(PLANTS.map(p => [p.id, p]));
-
   const CATEGORY_ORDER = ['Trees', 'Shrubs', 'Perennials', 'Grasses', 'Low/filler plants', 'Vines'];
+
+  // Category drives both the sidebar grouping and the marker fallback color,
+  // and both match on the exact string. The CSV is hand-edited, so a cell that
+  // differs only in case or padding ('low/filler plants') would otherwise read
+  // as a separate unknown category — which, before this, meant the plant was
+  // silently dropped from the catalog. Fold those onto the canonical spelling
+  // at load. A value that matches nothing real ('Phlox') can't be guessed and
+  // is left as-is; renderCatalogList shows it rather than hiding it.
+  const CANONICAL_CATEGORY = new Map(CATEGORY_ORDER.map(c => [c.toLowerCase(), c]));
+  function canonicalCategory(value) {
+    const trimmed = (value || '').trim();
+    return CANONICAL_CATEGORY.get(trimmed.toLowerCase()) || trimmed;
+  }
+
+  const PLANTS = LOT_DATA.plants.map(p => ({ ...p, category: canonicalCategory(p.category) }));
+  const PLANTS_BY_ID = Object.fromEntries(PLANTS.map(p => [p.id, p]));
   const CATEGORY_FALLBACK_COLOR = {
     'Trees': '#4a7c3f',
     'Shrubs': '#6b8e3e',
@@ -668,7 +681,12 @@
       byCategory[plant.category] = byCategory[plant.category] || [];
       byCategory[plant.category].push(plant);
     }
-    const categories = CATEGORY_ORDER.filter(c => byCategory[c]);
+    // Known categories first, in their curated order; anything left over goes
+    // after them. Filtering to CATEGORY_ORDER alone would drop a plant whose
+    // category is merely misspelled — present in data.js, absent from the UI,
+    // and impossible to place.
+    const extras = Object.keys(byCategory).filter(c => !CATEGORY_ORDER.includes(c)).sort();
+    const categories = CATEGORY_ORDER.filter(c => byCategory[c]).concat(extras);
     if (categories.length === 0) {
       container.innerHTML = `<div class="empty-msg">${emptyMsg}</div>`;
       return;
