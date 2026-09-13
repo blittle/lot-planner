@@ -156,11 +156,13 @@
   }
 
   // ---- State ----
-  // Set by loadPlacements() when saved placements reference plant ids that
-  // no longer exist (e.g. the plant catalog CSV was edited/reordered since
-  // they were saved) — surfaced to the user via a dismissible banner rather
-  // than silently discarding their data.
-  let droppedPlacementCount = 0;
+  // Placements whose plantId is no longer in data.js (e.g. the plant catalog
+  // CSV was edited since they were saved). They are NOT discarded: they stay
+  // out of `placements` so nothing tries to render a plant it can't describe,
+  // but savePlacements() writes them back to storage untouched, so declining
+  // the prompt leaves them intact and the prompt returns on the next load.
+  // Only an explicit "Drop" empties this.
+  let orphanedPlacements = [];
   let placements = loadPlacements(); // [{instanceId, plantId, xPct, yPct}]
   let selectedInstanceId = null;
   let filterText = '';
@@ -186,10 +188,11 @@
         }
       }
       const kept = parsed.filter(p => PLANTS_BY_ID[p.plantId]);
-      droppedPlacementCount = parsed.length - kept.length;
-      if (migrated || droppedPlacementCount > 0) {
-        // Persist right away so this migration/cleanup only has to run once.
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(kept));
+      orphanedPlacements = parsed.filter(p => !PLANTS_BY_ID[p.plantId]);
+      if (migrated) {
+        // Persist the id migration right away so it only has to run once.
+        // Orphans are written back as-is — resolving those is the user's call.
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(kept.concat(orphanedPlacements)));
       }
       return kept;
     } catch (e) {
@@ -199,7 +202,9 @@
   }
 
   function savePlacements() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(placements));
+    // Orphans ride along on every save so ordinary edits don't quietly evict
+    // placements the user hasn't decided about yet.
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(placements.concat(orphanedPlacements)));
   }
 
   function nextInstanceId() {
@@ -297,8 +302,10 @@
     clearArmed = false;
     clearAllBtn.textContent = 'Clear placed';
     placements = [];
+    orphanedPlacements = [];
     selectedInstanceId = null;
     savePlacements();
+    document.querySelector('.notice-banner-error')?.remove();
     renderAll();
   });
 
@@ -1071,7 +1078,9 @@
       type: 'lot-planner-export',
       version: 1,
       exportedAt: new Date().toISOString(),
-      placements,
+      // Orphans included: an export is a backup, and dropping the one copy of
+      // an undecided placement here would make it unrecoverable.
+      placements: placements.concat(orphanedPlacements),
       shapes,
     };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -1098,12 +1107,16 @@
 
   function applyImport(data) {
     placements = data.placements.filter(p => PLANTS_BY_ID[p.plantId]);
+    orphanedPlacements = data.placements.filter(p => !PLANTS_BY_ID[p.plantId]);
     shapes = data.shapes;
     selectedInstanceId = null;
     selectedShapeId = null;
     savePlacements();
     saveShapes();
     renderAll();
+    if (orphanedPlacements.length > 0) {
+      promptMissingPlants(orphanedPlacements, 'imported file');
+    }
   }
 
   importBtn.addEventListener('click', () => {
@@ -1166,16 +1179,69 @@
     renderStats();
   }
 
-  if (droppedPlacementCount > 0) {
+  // Placements reference plants by id, so a plant removed from data.js leaves
+  // its placements pointing at nothing. Rather than discard them, ask — and
+  // keep asking on every load until the user actually chooses "Drop", since
+  // the usual cause is an in-progress catalog edit that may yet be undone.
+  function promptMissingPlants(orphans, source) {
+    const counts = new Map();
+    for (const p of orphans) counts.set(p.plantId, (counts.get(p.plantId) || 0) + 1);
+    const total = orphans.length;
+    const detail = [...counts.entries()]
+      .map(([id, n]) => (n > 1 ? `${id} (×${n})` : id))
+      .join(', ');
+
+    console.error(
+      `[lot-planner] ${total} placement(s) from the ${source} reference plants missing from data.js:`,
+      [...counts.keys()]
+    );
+
+    const existing = document.querySelector('.notice-banner-error');
+    if (existing) existing.remove();
+
     const banner = document.createElement('div');
-    banner.className = 'notice-banner';
-    banner.innerHTML = `<span>${droppedPlacementCount} previously placed plant${droppedPlacementCount === 1 ? '' : 's'} could not be matched to the current plant list (it may have been edited) and ${droppedPlacementCount === 1 ? 'was' : 'were'} not restored.</span>`;
-    const dismiss = document.createElement('button');
-    dismiss.className = 'notice-banner-dismiss';
-    dismiss.textContent = '✕';
-    dismiss.addEventListener('click', () => banner.remove());
-    banner.appendChild(dismiss);
+    banner.className = 'notice-banner notice-banner-error';
+    banner.setAttribute('role', 'alert');
+
+    const msg = document.createElement('span');
+    msg.innerHTML =
+      `<strong>${total} placed plant${total === 1 ? '' : 's'} no longer in the plant list.</strong> ` +
+      `${total === 1 ? 'It was' : 'They were'} placed from the ${source} but ${total === 1 ? 'is' : 'are'} ` +
+      `missing from data.js, so ${total === 1 ? "it isn't" : "they aren't"} shown on the map. ` +
+      `Drop ${total === 1 ? 'it' : 'them'} for good, or keep ${total === 1 ? 'it' : 'them'} and be asked again next time? ` +
+      `Missing plant ${counts.size === 1 ? 'id' : 'ids'}: `;
+    const ids = document.createElement('code');
+    ids.textContent = detail;
+    msg.appendChild(ids);
+    banner.appendChild(msg);
+
+    const actions = document.createElement('div');
+    actions.className = 'notice-banner-actions';
+
+    const dropBtn = document.createElement('button');
+    dropBtn.className = 'notice-banner-btn btn-danger';
+    dropBtn.textContent = `Drop ${total === 1 ? 'it' : 'them'}`;
+    dropBtn.addEventListener('click', () => {
+      orphanedPlacements = [];
+      savePlacements();
+      banner.remove();
+      renderStats();
+    });
+
+    const keepBtn = document.createElement('button');
+    keepBtn.className = 'notice-banner-btn';
+    keepBtn.textContent = 'Keep for now';
+    keepBtn.addEventListener('click', () => banner.remove());
+
+    actions.appendChild(dropBtn);
+    actions.appendChild(keepBtn);
+    banner.appendChild(actions);
+
     document.querySelector('.app').insertBefore(banner, document.querySelector('.filterbar'));
+  }
+
+  if (orphanedPlacements.length > 0) {
+    promptMissingPlants(orphanedPlacements, 'saved layout');
   }
 
   window.addEventListener('resize', () => {
